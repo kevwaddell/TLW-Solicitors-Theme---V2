@@ -40,16 +40,16 @@
 <body id="<?php echo $dir ?>" <?php body_class(); ?>>
 	
 	<!-- HEADER LOGO AND NAVIGATION -->
-	<header class="header<?php echo (is_front_page()) ? ' abs':'' ?>">
+	<header class="header<?php echo (is_front_page()) ? ' abs':'' ?>" role="banner">
 		
 		<div class="container">
 		
-		<div class="header-inner" style="background-color: white;">
+		<div class="header-inner">
 			
 				<div class="row">
 				
 					<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
-						<h1 style="font-size: 16px; margin-left:15px;"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+						<h1 class="text-hide"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 					</div>
 					
 					<?php $freephone_num = get_field('freephone_num', 'option');?>
