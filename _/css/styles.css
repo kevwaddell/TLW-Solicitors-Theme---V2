@@ -1,0 +1,127 @@
+/* --------------------------- */
+/* Mixins and vars */
+/* --------------------------- */
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/* BASE SIZES */
+/* COLORS */
+/* SCREEN SIZES */
+/* LINKS */
+.no-text-dec {
+  text-decoration: none;
+}
+.underline {
+  text-decoration: underline;
+}
+/* TEXT */
+.caps {
+  text-transform: uppercase;
+}
+.no-caps {
+  text-transform: none;
+}
+.align-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+}
+.align-left {
+  text-align: left;
+}
+.italic {
+  font-style: italic;
+}
+.normal {
+  font-weight: normal;
+}
+.bold {
+  font-weight: bold;
+}
+.list-style-gone {
+  list-style: none;
+  padding-left: 0px;
+}
+/* BACKGROUND */
+/* SIZE */
+/* DISPLAY */
+.block {
+  display: block;
+}
+.none {
+  display: none;
+}
+.in-block {
+  display: inline-block;
+}
+.inline {
+  display: inline;
+}
+.over-hide {
+  overflow: hidden;
+}
+.no-float {
+  float: none;
+}
+.clear {
+  clear: both;
+}
+/* POSITION */
+.abs {
+  position: absolute;
+}
+.rel {
+  position: relative;
+}
+.fixed {
+  position: fixed;
+}
+/* MARGIN */
+.mag-auto {
+  margin: auto;
+}
+.mag-top-20 {
+  margin-top: 20px;
+}
+/* PADDING */
+/* BORDERS */
+.no-border {
+  border: none;
+}
+.shadow-inset-none {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.shadow-inset-5 {
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.7);
+}
+.shadow-inset-10 {
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+}
+.box-sizing {
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+}
+.no-box-sizing {
+  -webkit-box-sizing: content-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
