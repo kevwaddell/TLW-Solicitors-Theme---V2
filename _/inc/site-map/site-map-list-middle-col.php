@@ -4,7 +4,7 @@
 	
 	<?php if ($topics) { ?>
 		<div class="list-block">
-			<ul>
+			<ul class="list-unstyled">
 		<?php foreach ($topics as $topic) { ?>
 
 				<li><a href="<?php echo get_category_link($topic->term_id); ?>"><?php echo $topic->name; ?></a></li>

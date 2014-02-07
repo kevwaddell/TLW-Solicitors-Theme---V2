@@ -1,0 +1,165 @@
+.content {
+.bg-col(white);
+.pad-top(3);
+.pad-bot(3);
+.pad-left(1.5);
+.pad-right(1.5);
+	
+	@media (min-width: @screen-sm) {
+	.pad-left(0);
+	.pad-right(0);
+	}
+	
+	@media (min-width: @screen-md) {
+	.pad-right(3);
+	}
+	
+	@media (min-width: @screen-lg) {
+	.pad-right(0);
+	}
+
+	h2, h3, h4, h5 {
+	.mag-top(0);
+	.col(@gray);
+	}
+	
+	h2 {
+	.font-size(3);	
+	.line-h(3.4);
+	.font-lite;	
+	
+		@media (min-width: @screen-sm) {
+		.font-size(4);	
+		.line-h(4.4);
+		}
+	}
+	
+	p, ul, ol {
+	.font-size(1.4);
+	.line-h(1.8);	
+	
+		@media (min-width: @screen-sm) {
+		.font-size(1.6);
+		.line-h(2);	
+		}	
+	}
+	
+	p {
+	.mag-bot(2);
+		&.intro {
+		.bold;
+		.col(lighten(@grayDk, 10%));	
+		}
+		
+		&:last-child {
+		.mag-bot(0);	
+		}
+	}
+	
+	article.page, article.post {
+		//Unordered list
+		ul {
+		list-style: none;
+		.pad-left(2);
+			li {
+			.pad-left(2);
+			.rel;
+			}
+			li:before {
+			.abs;
+			.left(0);
+			content: "\00BB";
+			.col(@gray);
+			.bold;		
+			.mag-right(1);
+			}
+		}
+		
+		//Ordered list
+		ol {
+		list-style: none;
+		.pad-left(2);
+		list-style-position: inside;
+		counter-reset: item;
+			li {
+			//counter-increment: list-counter;
+			//.pad-left(2);
+			.rel;
+				&:before {
+				content: counters(item, ".") " - ";
+				counter-increment: item;
+				.col(@gray);
+				.bold;
+				}
+			}
+		}
+		
+		h3.icon-header {
+		.pad(1.5;1;1.5;1);
+		.font-size(1.6);
+		.line-h(1.8);
+		.bg-col(@red);
+		.col(white);
+		.mag-bot(3);
+		
+			@media (min-width: @screen-md) {
+			.font-size(2.5);
+			.line-h(1.8);
+			.pad-top(1.6);
+			.pad-bot(1.6)
+			}
+			
+			@media (min-width: @screen-lg) {
+			.font-size(1.8);
+			.line-h(2);
+			.pad-top(1.5);
+			.pad-bot(1.5)
+			}
+			
+			i {;
+			.fleft;
+			.col(@redMid);
+			.pad-right(1);
+			.w(3);
+			text-align: center;
+			}
+			
+			@media (min-width: @screen-sm) {
+			.font-size(2.5);
+			}	
+		}
+		
+	}//Article styles
+	
+	p.tel-num {
+	.mag-top(3);
+	.caps;
+	.col(@gray);
+	.font-size(1.8);
+		@media (min-width: @screen-sm) {
+		.font-size(2.5);
+		}
+		
+		i {
+		.col(@grayDk);	
+		}
+		
+		span {
+		.col(@green);	
+		}
+	}	
+	
+	.page-top {
+	.pad-bot(3);	
+		
+	}
+		
+}
+
+body.home {
+	.content {
+	.bg-col(transparent);
+	.pad-top(0);
+	.pad-bot(0);
+	}	
+}

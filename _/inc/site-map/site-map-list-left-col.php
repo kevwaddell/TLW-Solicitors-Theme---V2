@@ -19,7 +19,7 @@
 			<h3><a href="<?php echo get_permalink($practice->ID); ?>"><?php echo $practice->post_title; ?></a></h3>
 			
 		<?php if ($practice_children) { ?>
-			<ul>
+			<ul class="list-unstyled">
 			
 			<?php foreach ($practice_children as $practice_child) { ?>
 			<li><a href="<?php echo get_permalink($practice_child->ID); ?>"><?php echo $practice_child->post_title; ?></a></li>

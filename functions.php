@@ -69,6 +69,8 @@ function add_feat_img ( $post ) {
 /* DE-REGISTER STYLES */
 //include (STYLESHEETPATH . '/_/functions/de-register-styles.php');
 
+require_once(STYLESHEETPATH . '/_/functions/wp_bootstrap_navwalker.php');
+
 /* REGISTER FEEDBACK CPT */
 include (STYLESHEETPATH . '/_/functions/tlw_feedback_cpt.php');
 

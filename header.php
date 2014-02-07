@@ -32,15 +32,24 @@
 	<?php 
 	$url = explode('/',$_SERVER['REQUEST_URI']);
 	$dir = $url[1] ? $url[1] : 'home';
+	
+	$services = array(24, 26, 29, 31, 33, 35);
 	global $post;
+	
+	if (in_array($post->post_parent, $services)) {
+	$dir = "services";	
+	}
+	
 	?>
 	
 </head>
 
 <body id="<?php echo $dir ?>" <?php body_class(); ?>>
+
+<div class="tlw-wrapper nav-closed">
 	
 	<!-- HEADER LOGO AND NAVIGATION -->
-	<header class="header<?php echo (is_front_page()) ? ' abs':'' ?>" role="banner">
+	<header class="header<?php echo (is_front_page()) ? ' pos-abs':'' ?>" role="banner">
 		
 		<div class="container">
 		
@@ -48,30 +57,31 @@
 			
 				<div class="row">
 				
-					<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
+					<?php $freephone_num = get_field('freephone_num', 'option');?>
+					<?php if (isset($freephone_num)) { ?>
+					<div class="col-xs-12 col-sm-3 col-sm-push-3 col-md-5 col-md-push-2 col-lg-6 col-lg-push-2 " style="text-align:center;">
+						<span class="tel-num text-center"><i class="fa fa-mobile fa-lg"></i> <?php echo $freephone_num; ?></span>
+					</div>
+					<?php }  ?>
+				
+					<div class="col-xs-10 col-sm-3 col-sm-pull-3 col-md-2 col-md-pull-5 col-lg-2 col-lg-pull-6">
 						<h1 class="text-hide"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 					</div>
 					
-					<?php $freephone_num = get_field('freephone_num', 'option');?>
-					<?php if (isset($freephone_num)) { ?>
-					<div class="col-xs-12 col-sm-4 col-md-6 col-lg-6" style="text-align:center;">
-					<span class="tel-num" style="font-size: 16px;"><i class="fa fa-mobile fa-lg"></i> <?php echo $freephone_num; ?></span>
-					</div>
-					<?php }  ?>
+					<button id="nav-btn" class="visible-xs"><i class="fa fa-bars fa-lg"></i><span class="sr-only">Navigation</span></button>
 					
-					<div class="hidden-xs col-sm-4 col-md-4 col-lg-4">
-					<?php wp_nav_menu(array( 'container' => 'nav', 'container_id' => 'main-nav', 'theme_location' => 'main_menu', 'fallback_cb' => false ) ); ?>
+					<div class="col-xs-6 col-sm-6 col-md-5 col-lg-4">
+						<nav id="main-nav" class="nav-closed">
+							<?php wp_nav_menu(array( 
+							'container' => 'false', 
+							'menu' => 'main_menu', 
+							'menu_class'  => 'menu clearfix',
+							'fallback_cb' => false ) ); 
+							?>
+						</nav>
 					</div>
 				
 				</div>
-				
-				<?php if (!is_front_page()) { ?>
-				
-				<?php if ( function_exists('yoast_breadcrumb') ) {
-					yoast_breadcrumb('<div id="breadcrumbs" style="background-color: black; color: white; padding: 5px 15px;">','</div>');
-				} ?>	
-				
-				<?php }  ?>
 			
 		</div>
 		
@@ -79,14 +89,26 @@
 				
 	</header>
 	
-	<?php if (is_front_page()) { ?>
+	<?php if (!is_front_page()) { ?>
+	<div class="container">		
+		<?php if ( function_exists('yoast_breadcrumb') ) {
+			yoast_breadcrumb('<div id="breadcrumbs">','</div>');
+		} ?>	
+	</div>			
+	<?php }  ?>
+	
+	<?php if (is_front_page()) { 
+	$header_img = get_header_image();
+	//echo '<pre>';print_r($header_img);echo '</pre>';
+		
+	?>
 	
 	<section id="home-banner">
 	
-		<div class="banner-wrap" style="background-color: Silver; max-width: 1500px; margin: auto;">
+		<div class="banner-wrap" style="background-image: url(<?php echo $header_img; ?>);">
 			
 			<div class="container">
-			<p class="tag-line" style="height:440px; padding-top: 170px; font-size: 50px; margin: 80px 0px;">For added TLC<br>think TLW Solicitors</p>
+			<p class="tag-line">For added TLC<br>think TLW Solicitors</p>
 			</div>
 			
 		</div>
@@ -98,4 +120,4 @@
 	<!-- MAIN CONTENT START -->
 	<div class="container">
 	
-	<div class="content" <?php echo(is_front_page()) ? '':' style="background-color: white; padding: 30px 0px;"' ?>>
+	<div class="content">

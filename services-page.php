@@ -55,7 +55,7 @@ $page_icon = get_field('page_icon');
 				
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-7 col-lg-offset-0">
 				
-				<h2 style="margin-top: 0px;"><?php the_title(); ?></h2>
+				<h2><?php the_title(); ?></h2>
 				
 				<?php if (isset($intro)) { ?>
 				<p class="intro"><?php echo $intro ; ?></p>
@@ -77,6 +77,13 @@ $page_icon = get_field('page_icon');
 
 <?php if ($children) { 
 $contact_page = get_page_by_title("Contact us");
+$child_count = count($children);
+
+if ( $child_count % 2 == 0 ) {
+$sm_col = "col-sm-6";	
+} else {
+$sm_col = "col-sm-12";	
+}
 ?>
 
 <!-- PAGE CONTENT SECTION -->
@@ -86,27 +93,27 @@ $contact_page = get_page_by_title("Contact us");
 	<div class="row">
 	
 		<aside class="sidebar col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0">
-			<ul>
+			<ul class="list-unstyled tab-links row">
 			<?php foreach ($children as $child) { 
 			
 			if ($current_post->post_parent != 0) {
 				
 				if ($current_post->ID == $child->ID) {
-				$link = '<li class="active">';
+				$link = '<li class="active col-xs-12 '.$sm_col.' col-md-12 col-lg-12">';
 				} else {
-				$link = '<li>';	
+				$link = '<li class="col-xs-12 '.$sm_col.' col-md-12 col-lg-12">';	
 				}
 						
-			$link .= '<a href="'.  get_permalink($child->ID) .'" title="'. $child->post_title .'">'. $child->post_title. '</a>';	
+			$link .= '<a href="'.  get_permalink($child->ID) .'" title="'. $child->post_title .'" class="no-icon">'. $child->post_title. '<i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>';	
 			} else {
 			
 				if ($active_child->ID == $child->ID) {
-				$link = '<li class="active">';
+				$link = '<li class="active col-xs-12 '.$sm_col.' col-md-12 col-lg-12">';
 				} else {
-				$link = '<li>';	
+				$link = '<li class="col-xs-12 '.$sm_col.' col-md-12 col-lg-12">';	
 				}
 				
-			$link .= '<a href="#'.  $child->post_name .'-panel" data-toggle="tab" title="'. $child->post_title .'">'. $child->post_title. '</a>';			
+			$link .= '<a href="#'.  $child->post_name .'-panel" data-toggle="tab" title="'. $child->post_title .'" class="no-icon">'. $child->post_title. '<i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>';			
 			}	
 			 
 			$link .= '</li>';	
@@ -120,7 +127,7 @@ $contact_page = get_page_by_title("Contact us");
 		
 		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-7 col-lg-offset-0">
 			
-			<div class="tab-content">
+			<div class="tab-content clearfix">
 			
 			<?php if (isset($active_child) && $current_post->post_parent != 0) : 
 			$page_content_raw = $active_child->post_content;
@@ -142,9 +149,10 @@ $contact_page = get_page_by_title("Contact us");
 				<?php endif; ?>
 				
 				<?php echo $page_content; ?>
+					<a href="<?php echo get_permalink($contact_page->ID) ; ?>?service=<?php echo $post->post_name; ?>&service-type=<?php echo $active_child->post_name; ?>#make-a-claim" title="Make a claim enquiry" class="icon-btn col-xs-12 col-sm-12 col-md-7 col-lg-7">
+					<i class="fa fa-check fa-lg icon"></i> Make a claim enquiry <i class="fa fa-angle-right fa-lg"></i>
+					</a>
 				
-				<a href="<?php echo get_permalink($contact_page->ID) ; ?>?service=<?php echo $post->post_name; ?>&service-type=<?php echo $active_child->post_name; ?>#make-a-claim" title="Make a claim enquiry" class="btn"><i class="fa fa-check"></i> Make a claim enquiry <i class="fa fa-angle-right"></i></a>
-			
 			</article>
 			
 			<?php else : ?>
@@ -172,19 +180,21 @@ $contact_page = get_page_by_title("Contact us");
 				
 				<?php the_content(); ?>
 				
-				<a href="<?php echo get_permalink($contact_page->ID) ; ?>?service=<?php echo $service; ?>&service-area=<?php echo $service_area; ?>#make-a-claim" title="Make a claim enquiry" class="btn"><i class="fa fa-check"></i> Make a claim enquiry <i class="fa fa-angle-right"></i></a>
+					<a href="<?php echo get_permalink($contact_page->ID) ; ?>?service=<?php echo $service; ?>&service-area=<?php echo $service_area; ?>#make-a-claim" title="Make a claim enquiry" class="icon-btn col-xs-12 col-sm-12 col-md-7 col-lg-7">
+					<i class="fa fa-check fa-lg icon"></i> Make a claim enquiry <i class="fa fa-angle-right fa-lg"></i>
+					</a>
 				
 			</article>
 			
 			<?php endforeach;
 			wp_reset_postdata();
 			 ?>
-			 
-			 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span>0800 169 5925</span></p>
 	
 			<?php endif; ?>
 			
 			</div>	
+			
+			 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span>0800 169 5925</span></p>
 			
 		</div><!-- End Col -->
 		

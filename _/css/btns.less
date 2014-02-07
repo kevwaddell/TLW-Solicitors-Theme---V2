@@ -1,0 +1,38 @@
+a.icon-btn {
+.block;
+.bg-col(@grayDk);
+.col(white);
+.h(4);
+.line-h(4);
+.pad-left(0);
+.pad-right(0);
+.font-size(1.6);
+.mag-top(2);
+.no-text-dec;
+
+	@media (min-width: @screen-lg) {
+	.font-size(1.8);
+	}
+
+	i {
+	.block;
+	.w(4);
+	.h(4);
+	text-align: center;
+	.line-h(4);
+	
+		&.fa-angle-right {
+		.fright;	
+		.bg-col(@red);
+		}	
+		
+		&.icon {
+		.fleft;	
+		.col(@gray);
+		}	
+	}
+	
+	&:hover, &:active, &:focus {
+	.bg-col(lighten(@grayDk, 10%));	
+	}	
+}

@@ -60,11 +60,17 @@ $intro = get_field('intro');
 	<div class="row">
 	
 		<aside class="sidebar col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0">
-			<ul>
+			<ul class="list-unstyled tab-links">
 			<?php foreach ($positions as $position) { 
 			$tabs_counter++;
 			?>
-				<li<?php echo ($tabs_counter == 1) ? ' class="active"':''; ?>><a href="#<?php echo $position->slug ; ?>-panel" data-toggle="tab" title="<?php echo $position->name ; ?>"><?php echo $position->name ; ?></a></li>
+				<li<?php echo ($tabs_counter == 1) ? ' class="active"':''; ?>>
+					<a href="#<?php echo $position->slug ; ?>-panel" data-toggle="tab" title="<?php echo $position->name ; ?>" class="no-icon">
+					<?php echo $position->name ; ?>
+					<i class="fa fa-angle-right fa-lg"></i>
+					<i class="fa fa-angle-down fa-lg"></i>
+					</a>
+				</li>
 			
 			<?php } ?>
 				
@@ -111,13 +117,13 @@ $intro = get_field('intro');
 					//echo '<pre>';print_r($departments);echo '</pre>';
 					?>
 					
-					<div class="team-list-box" style="position: relative; min-height: 250px;">
+					<div class="team-list-box">
 						
 						<div class="row">
 						
-							<div class="profile-img hidden-xs col-sm-5 col-md-5 col-lg-5" style="position: absolute; top: 0px; bottom: 0px; min-height: 250px; max-height:350px;">
+							<div class="profile-img hidden-xs col-sm-5 col-md-5 col-lg-5">
 							
-							<figure style="position: absolute; left: 15px; right:0px; top: 0px; bottom: 0px; border: 1px solid DarkGray;"></figure>
+								<figure></figure>
 								
 							</div>
 							
@@ -125,7 +131,7 @@ $intro = get_field('intro');
 						
 								<h4><?php the_title(); ?></h4>
 							
-								<?php if ( isset($position) ) { ?>
+								<?php if ( $position ) { ?>
 								<p class="position"><?php echo $position; ?></p>
 								<?php }  ?>	
 							
@@ -141,13 +147,13 @@ $intro = get_field('intro');
 									<?php foreach ($departments as $department) { 
 									$icon = get_field('page_icon', $department->ID);
 									?>
-									<a href="<?php echo get_permalink($department->ID); ?>" title="<?php echo $department->post_title; ?> Services">
+									<a href="<?php echo get_permalink($department->ID); ?>" class="icon-btn" title="<?php echo $department->post_title; ?> Services">
 									
 									<?php if ($icon) { ?>
-									<i class="fa <?php echo $icon; ?>"></i>
+									<i class="fa <?php echo $icon; ?> fa-lg icon"></i>
 									<?php }  ?>
 									<?php echo $department->post_title; ?> Services 
-									<i class="fa fa-angle-right"></i>	
+									<i class="fa fa-angle-right fa-lg"></i>	
 									</a>
 									<?php } ?>
 								

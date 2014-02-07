@@ -26,37 +26,39 @@ $feedback_quotes = get_posts($feedback_args);
 <?php if ($services) { ?>
 
 <section id="service-links">
-	
-		<div class="service-links-wrap" style="background-color: white; padding: 0px 15px 30px 15px; margin-top: -80px;">
 		
-		<h2>Which service do you require?</h2>
+		<h2 class="text-center">Which service do you require?</h2>
 		
 			<div class="row">
 			<?php foreach ($services as $service) { 
 			$icon = get_field('page_icon', $service->ID);
 			$color = get_field('page_colour', $service->ID);
+			$title_split = explode(" ", $service->post_title);
+			$title = implode("<br> ", $title_split);
+			if (count($title_split) == 3) {
+			$title = str_replace("<br>","" , $title);
+			}
 			?>
 				<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2">
 					<a href="<?php echo get_permalink($service->ID); ?>" title="<?php echo $service->post_title; ?>" class="service-link <?php echo $color; ?>">
-						<i class="fa <?php echo $icon; ?> fa-lg"></i>
-						<?php echo $service->post_title; ?>
+						<i class="fa <?php echo $icon; ?> fa-2x icon"></i>
+						<?php echo $title; ?>
+						<i class="fa fa-angle-right"></i>
 						<span>See more</span>
 					</a>
 				</div>
 			<?php } ?>
 			</div>
-		
-		</div>
 
 </section>
 
-<section id="enqiry-start-form">
+<section id="enqiry-start-form" style="display: none;">
 	
 	<div class="row">
-		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+		<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 			
-			<h3>Start your enquiry today</h3>
-			<select name="service" id="service-select" tabindex="1" style="display: none;">
+			<h3 class="text-center">Start your enquiry today</h3>
+			<select name="service" id="service-select" tabindex="1">
 				<option value="General enquiry">Please select a service</option>
 				<?php foreach ($services as $service) { ?>
 				<option value="<?php echo $service->post_title; ?>"><?php echo $service->post_title; ?></option>
@@ -74,7 +76,7 @@ $feedback_quotes = get_posts($feedback_args);
 			$services_areas = get_pages($services_areas_args);
 			//echo '<pre>';print_r($services_areas);echo '</pre>';
 			?>
-			<select name="service-area" class="service-area-select" id="<?php echo $service->post_name; ?>-select" tabindex="2" style="display: none;">
+			<select name="service-area" class="service-area-select" id="<?php echo $service->post_name; ?>-select" tabindex="2">
 				<option value="General enquiry">Select a service area</option>
 				<?php foreach ($services_areas as $services_area) { ?>
 				<option value="<?php echo $services_area->post_title; ?>"><?php echo $services_area->post_title; ?></option>
@@ -85,7 +87,7 @@ $feedback_quotes = get_posts($feedback_args);
 			<form id="enqiry-form" action="<?php echo get_permalink($contact_page->ID); ?>#make-a-claim" method="get">
 				<input type="hidden" name="service" value="General enquiry">
 				<input type="hidden" name="service-area" value="General enquiry">
-				<input type="submit" value="Start">
+				<input class="submit-btn" type="submit" value="Start">
 			</form>
 			
 		</div>
@@ -109,9 +111,9 @@ $feedback_quotes = get_posts($feedback_args);
 		$location = get_field('location', $quote->ID);	
 		?>
 			<div class="quote item <?php echo ($feedback_counter == 1) ? " active":""; ?>">
-				<blockquote><i class="fa fa-quote-left"></i> <?php echo $quote_txt; ?> <i class="fa fa-quote-right"></i></blockquote>
+				<blockquote class="text-center"><i class="fa fa-quote-left"></i> <?php echo $quote_txt; ?> <i class="fa fa-quote-right"></i></blockquote>
 				
-				<p><?php echo $client_name; ?>, <?php echo $location; ?></p>
+				<p class="text-center"><?php echo $client_name; ?>, <?php echo $location; ?></p>
 			</div>
 		<?php } ?>
 	

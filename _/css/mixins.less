@@ -7,6 +7,12 @@ text-decoration: underline;
 }
 
 /* TEXT */
+.font-lite {
+font-family: @lite-font;
+font-weight: 300; 
+font-stretch: normal;	
+}
+
 .font-size(@sizeValue){
   @remValue: @sizeValue;
   @pxValue: (@sizeValue * @baseSize);
@@ -25,18 +31,6 @@ text-transform: uppercase;
 .no-caps {
 text-transform: none;
 }
-.align-center{
-text-align: center;
-}
-.align-right {
-text-align: right;
-}
-.align-left {
-text-align: left;
-}
-.italic {
-font-style: italic;
-}
 .normal {
 font-weight: normal;
 }
@@ -46,6 +40,9 @@ text-indent: ~"@{pxValue}px";
 }
 .bold {
 font-weight: bold;
+}
+.italic {
+font-style: italic;	
 }
 .list-style-gone {
 	list-style: none;
@@ -122,6 +119,12 @@ display: @type;
 .over-hide{
 overflow: hidden;
 }
+.fleft {
+float: left;	
+}
+.fright {
+float: right;	
+}
 .no-float{
 float: none;
 }
@@ -130,10 +133,10 @@ clear: both;
 }
 
 /* POSITION */
-.abs{
+.abs {
 position: absolute;
 }
-.rel{
+.rel {
 position: relative;
 }
 .fixed{
@@ -187,10 +190,6 @@ margin: ~"@{pxValue}px";
 @leftPxValue: (@left * @baseSize);
 
  margin: ~"@{topPxValue}px @{rightPxValue}px @{botPxValue}px @{leftPxValue}px"; 
-}
-
-.mag-top-20 {
-.mag-top(2);
 }
 
 /* PADDING */

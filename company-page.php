@@ -90,13 +90,13 @@ $intro = get_field('intro');
 		<div class="row">
 		
 			<aside class="sidebar col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0">
-				<ul>
+				<ul class="list-unstyled tab-links">
 				<?php foreach ($children as $child) { 
 				
 				$page_icon = get_field('page_icon', $child->ID);
 				
 				if (isset($page_icon)) {
-				$icon = '<i class="fa '.$page_icon.'"></i> ';
+				$icon = '<i class="fa '.$page_icon.' fa-lg icon"></i>';
 				} else {
 				$icon = "";		
 				}
@@ -109,7 +109,7 @@ $intro = get_field('intro');
 					$link = '<li>';	
 					}
 					
-				$link .= '<a href="'.  get_permalink($child->ID) .'" title="'. $child->post_title .'">'. $icon . $child->post_title .'</a>';	
+				$link .= '<a href="'.  get_permalink($child->ID) .'" title="'. $child->post_title .'">'. $icon . $child->post_title .'<i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>';	
 				} else {
 				
 					if ($active_child->ID == $child->ID) {
@@ -118,7 +118,7 @@ $intro = get_field('intro');
 					$link = '<li>';	
 					}
 					
-				$link .= '<a href="#'.  $child->post_name .'-panel" data-toggle="tab" title="'. $child->post_title .'">'. $icon . $child->post_title .'</a>';			
+				$link .= '<a href="#'.  $child->post_name .'-panel" data-toggle="tab" title="'. $child->post_title .'">'. $icon . $child->post_title .'<i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>';			
 				}	
 				 
 				$link .= '</li>';	
@@ -134,12 +134,17 @@ $intro = get_field('intro');
 					$page_icon = get_field('page_icon', $extra_child->ID);
 					
 					if (isset($page_icon)) {
-					$icon = '<i class="fa '.$page_icon.'"></i> ';
+					$icon = '<i class="fa '.$page_icon.' fa-lg icon"></i>';
 					}
 					
 					?>
 					<li>
-					<a href="<?php echo get_permalink($extra_child->ID); ?>" title="<?php echo $extra_child->post_title; ?>"><?php echo ($icon) ? $icon : ""; ?><?php echo $extra_child->post_title; ?></a>
+					<a href="<?php echo get_permalink($extra_child->ID); ?>" title="<?php echo $extra_child->post_title; ?>">
+					<?php echo ($icon) ? $icon : ""; ?>
+					<?php echo $extra_child->post_title; ?>
+					<i class="fa fa-angle-right fa-lg"></i>
+					<i class="fa fa-angle-down fa-lg"></i>
+					</a>
 					</li>
 					<?php } ?>
 				
@@ -184,22 +189,23 @@ $intro = get_field('intro');
 							if ($rel_page['link_title']) {
 							$title = $rel_page['link_title'];
 							} else {
-							$title = $active_child->post_title;	
+							$title = $rel_page['page']->post_title;		
 							}
 							
 							$icon = get_field('page_icon', $rel_page['page']->ID);
 						?>
 						
-						<a href="<?php echo get_permalink($rel_page['page']->ID) ; ?>" title="<?php echo $title; ?>" class="btn">
-						
-						<?php if ($icon) { ?>
-						<i class="fa <?php echo $icon; ?>"></i>
-						<?php } ?>
-						<?php echo $title; ?>
-						<i class="fa fa-angle-right"></i>
-						
-						</a>
-						
+						<div class="clearfix">
+							<a href="<?php echo get_permalink($rel_page['page']->ID) ; ?>" title="<?php echo $title; ?>" class="icon-btn clearfix col-xs-12 col-sm-12 col-md-7 col-lg-7">
+							
+							<?php if ($icon) { ?>
+							<i class="fa <?php echo $icon; ?> fa-lg icon"></i>
+							<?php } ?>
+							<?php echo $title; ?>
+							<i class="fa fa-angle-right fa-lg"></i>
+							
+							</a>
+						</div>
 						<?php } ?>
 						
 					<?php } ?>
@@ -241,19 +247,20 @@ $intro = get_field('intro');
 							if ($rel_page['link_title']) {
 							$title = $rel_page['link_title'];
 							} else {
-							$title = get_the_title();	
+							$title = $rel_page['page']->post_title;	
 							}
 							
 							$icon = get_field('page_icon', $rel_page['page']->ID);
 						?>
-						
-						<a href="" title="<?php echo $title; ?>" class="btn">
-						<?php if ($icon) { ?>
-						<i class="fa <?php echo $icon; ?>"></i>
-						<?php } ?>
-						<?php echo $title; ?>
-						<i class="fa fa-angle-right"></i>
-						</a>
+						<div class="clearfix">
+							<a href="<?php echo get_permalink($rel_page['page']->ID) ; ?>" title="<?php echo $title; ?>" class="icon-btn clearfix col-xs-12 col-sm-12 col-md-7 col-lg-7">
+							<?php if ($icon) { ?>
+							<i class="fa <?php echo $icon; ?> fa-lg icon"></i>
+							<?php } ?>
+							<?php echo $title; ?>
+							<i class="fa fa-angle-right fa-lg"></i>
+							</a>
+						</div>
 						
 						<?php } ?>
 						

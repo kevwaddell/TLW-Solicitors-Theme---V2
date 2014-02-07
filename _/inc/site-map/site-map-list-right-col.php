@@ -5,7 +5,7 @@
 	<?php if ($company_pages) { ?>
 		<div class="list-block">
 	
-			<ul>
+			<ul class="list-unstyled">
 			
 				<?php foreach ($company_pages as $company_page) { ?>
 				<li><a href="<?php echo get_permalink($company_page->ID); ?>"><?php echo $company_page->post_title; ?></a></li>
@@ -21,7 +21,7 @@
 	<?php if ($rescources_pages) { ?>
 		<div class="list-block">
 	
-			<ul>
+			<ul class="list-unstyled">
 			
 				<?php foreach ($rescources_pages as $rescources_page) { ?>
 				<li><a href="<?php echo get_permalink($rescources_page->ID); ?>"><?php echo $rescources_page->post_title; ?></a></li>
@@ -37,7 +37,7 @@
 	<?php if ($legal_pages) { ?>
 		<div class="list-block">
 	
-			<ul>
+			<ul class="list-unstyled">
 			
 				<?php foreach ($legal_pages as $legal_page) { ?>
 									 
