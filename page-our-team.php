@@ -30,7 +30,7 @@ $intro = get_field('intro');
 				</div>
 				
 				
-				<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-7 col-lg-offset-0">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-7 col-md-offset-0 col-lg-7 col-lg-offset-0">
 				
 				<h2 style="margin-top: 0px;"><?php the_title(); ?></h2>
 				
@@ -65,10 +65,7 @@ $intro = get_field('intro');
 			$tabs_counter++;
 			?>
 				<li<?php echo ($tabs_counter == 1) ? ' class="active"':''; ?>>
-					<a href="#<?php echo $position->slug ; ?>-panel" data-toggle="tab" title="<?php echo $position->name ; ?>" class="no-icon">
-					<?php echo $position->name ; ?>
-					<i class="fa fa-angle-right fa-lg"></i>
-					<i class="fa fa-angle-down fa-lg"></i>
+					<a href="#<?php echo $position->slug ; ?>" data-toggle="tab" title="<?php echo $position->name ; ?>" class="no-icon"><?php echo $position->name ; ?><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i>
 					</a>
 				</li>
 			
@@ -77,7 +74,7 @@ $intro = get_field('intro');
 			</ul>
 		</aside>
 		
-		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-7 col-lg-offset-0">
+		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-8 col-lg-offset-0">
 			
 			<div class="tab-content">
 			
@@ -97,82 +94,94 @@ $intro = get_field('intro');
 			//echo '<pre>';print_r($profiles);echo '</pre>';
 			?>
 	
-			<article class="page tab-pane fade<?php echo ($panels_counter == 1) ? ' in active':''; ?>" id="<?php echo $position->slug; ?>-panel">
+			<div class="team-list tab-pane fade<?php echo ($panels_counter == 1) ? ' in active':''; ?>" id="<?php echo $position->slug; ?>">
 			
 			<h3 class="icon-header">	
 				<?php if ($page_icon) { ?>
-				<i class="fa <?php echo $page_icon; ?>"></i> 
+				<i class="fa <?php echo $page_icon; ?> fa-lg"></i> 
 				<?php } ?>
 				
 				<?php echo $position->name; ?>
 			</h3>
 			
-				<?php if ($profiles) { ?>
-				
-				<?php foreach ($profiles as $post) : 
-					setup_postdata($post);
-					$position = get_field('position');
-					$email = get_field('email');
-					$departments = get_field('departments');
-					//echo '<pre>';print_r($departments);echo '</pre>';
-					?>
+			<div class="row">
 					
-					<div class="team-list-box">
+				<div class="col-xs-12 col-sm-12 col-md-11 col-lg-11">
+				
+					<?php if ($profiles) { ?>
+					
+					<?php foreach ($profiles as $post) : 
+						setup_postdata($post);
+						$position = get_field('position');
+						$email = get_field('email');
+						$departments = get_field('departments');
+						$profile_img = get_field('profile_img');
+						//echo '<pre>';print_r($profile_img);echo '</pre>';
+						?>
 						
-						<div class="row">
-						
-							<div class="profile-img hidden-xs col-sm-5 col-md-5 col-lg-5">
+						<div class="team-list-box">
 							
-								<figure></figure>
-								
-							</div>
+							<div class="row">
 							
-							<div class="col-xs-12 col-sm-7 col-sm-offset-5 col-md-7 col-md-offset-5 col-lg-7 col-lg-offset-5">
-						
-								<h4><?php the_title(); ?></h4>
-							
-								<?php if ( $position ) { ?>
-								<p class="position"><?php echo $position; ?></p>
-								<?php }  ?>	
-							
-								<?php the_content(); ?>
+								<div class="profile-img hidden-xs col-sm-5 col-md-5 col-lg-5">
 								
-								<?php if ( isset($email) ) { ?>
-								<a href="mailto:<?php echo $email; ?>" title="<?php the_title_attribute( array( 'before' => 'Send an email to: ', 'after' => '' ) ); ?>" class="email-link"><i class="fa fa-envelope"></i> <?php echo $email; ?></a>
-								<?php }  ?>	
-								
-								<?php if ( isset($departments) ) { ?>
-								<div class="btns-wrap">
-								
-									<?php foreach ($departments as $department) { 
-									$icon = get_field('page_icon', $department->ID);
-									?>
-									<a href="<?php echo get_permalink($department->ID); ?>" class="icon-btn" title="<?php echo $department->post_title; ?> Services">
+									<figure>
+										<img src="<?php echo $profile_img['sizes']['profile-thumb']; ?>" width="<?php echo $profile_img['sizes']['profile-thumb-width']; ?>" height="<?php echo $profile_img['sizes']['profile-thumb-height']; ?>">
+									</figure>
 									
-									<?php if ($icon) { ?>
-									<i class="fa <?php echo $icon; ?> fa-lg icon"></i>
-									<?php }  ?>
-									<?php echo $department->post_title; ?> Services 
-									<i class="fa fa-angle-right fa-lg"></i>	
-									</a>
-									<?php } ?>
-								
 								</div>
-								<?php }  ?>	
-						
+								
+								<div class="col-xs-12 col-sm-7 col-sm-offset-5 col-md-7 col-md-offset-5 col-lg-7 col-lg-offset-5">
+							
+									<h4><?php the_title(); ?></h4>
+								
+									<?php if ( $position ) { ?>
+									<p class="position"><?php echo $position; ?></p>
+									<?php }  ?>	
+								
+									<?php the_content(); ?>
+									
+									<?php if ( isset($email) ) { ?>
+									<a href="mailto:<?php echo $email; ?>" title="<?php the_title_attribute( array( 'before' => 'Send an email to: ', 'after' => '' ) ); ?>" class="email-link"><i class="fa fa-envelope"></i> <?php echo $email; ?></a>
+									<?php }  ?>	
+									
+									<?php if ( isset($departments) ) { ?>
+									<div class="btns-wrap">
+									
+										<?php foreach ($departments as $department) { 
+										$icon = get_field('page_icon', $department->ID);
+										?>
+										<a href="<?php echo get_permalink($department->ID); ?>" class="icon-btn" title="<?php echo $department->post_title; ?> Services">
+										
+										<?php if ($icon) { ?>
+										<i class="hidden-xs fa <?php echo $icon; ?> fa-lg icon"></i>
+										<?php }  ?>
+										<?php echo $department->post_title; ?> Services 
+										<i class="fa fa-angle-right fa-lg"></i>	
+										</a>
+										<?php } ?>
+									
+									</div>
+									<?php }  ?>	
+							
+								</div>
+							
 							</div>
-						
+							
 						</div>
 						
+					<?php endforeach;
+						wp_reset_postdata();
+						?>	
+						
+					<?php } ?>
+					
+					
 					</div>
 					
-				<?php endforeach;
-					wp_reset_postdata();
-					?>	
-					
-				<?php } ?>
+				</div>
 				
-			</article>
+			</div>
 	
 			
 			<?php endforeach; ?>

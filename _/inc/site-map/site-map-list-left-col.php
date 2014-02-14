@@ -1,10 +1,16 @@
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 				
-	<h2>Services</h2>
+	<h3><i class="icon fa fa-cogs fa-lg"></i>Services</h3>
 	
 	<?php foreach ($practices as $practice) { ?>
 	
 	<?php 
+	$icon = get_field('page_icon', $practice->ID);
+	
+	if (!empty($icon)) {
+	$icon_tag = '<i class="icon fa '.$icon.'"></i>';	
+	}
+	
 	$practice_args = array(
 	'post_type'		=> 'page',
 	'orderby'		=> 'menu_order',
@@ -16,7 +22,7 @@
 	 ?>
 	
 		<div class="list-block">
-			<h3><a href="<?php echo get_permalink($practice->ID); ?>"><?php echo $practice->post_title; ?></a></h3>
+			<h4><a href="<?php echo get_permalink($practice->ID); ?>"><?php echo ($icon_tag) ? $icon_tag: ''; ?><?php echo $practice->post_title; ?><i class="fa fa-angle-right fa-lg"></i></a></h4>
 			
 		<?php if ($practice_children) { ?>
 			<ul class="list-unstyled">

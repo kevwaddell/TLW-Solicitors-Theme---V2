@@ -1,13 +1,49 @@
 <?php get_header(); ?>
 
-<?php if ( have_posts() ): while ( have_posts() ) : the_post(); ?>	
+<?php if ( have_posts() ): while ( have_posts() ) : the_post(); 
+$date = get_the_date('l - jS F - Y');	
+$gallery_imgs = get_field('gallery_imgs');	
+?>	
 <section class="page-content">
-
+	
 	<div class="row">
+	
+	<?php if (empty($gallery_imgs) || !has_post_thumbnail()) { ?>
+	
+		<?php $post_categories = get_the_category_list(); ?>
+	
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+	
+			<article <?php post_class(); ?>>
+			
+				<time class="date" datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar fa-lg"></i> <?php echo $date; ?></time>
+				
+				<h2 style="margin-top: 0px;"><?php the_title(); ?></h2>
+				
+				<?php the_content(); ?>
+				
+			</article>
+			
+			<?php if ($post_categories) { ?>
+			<div class="topic-list">
+				<?php echo $post_categories; ?>
+			</div>
+			<?php } ?>
+			
+			<div class="share-btns">
+				<?php echo do_shortcode('[shareaholic app="share_buttons" id="5017257"]'); ?>
+			</div>
+	
+	</div>
+	
+	<?php } else { ?>
 		
 		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-push-4 col-md-offset-0 col-lg-7 col-lg-push-4 col-lg-offset-0">
 	
-			<article>
+			<article <?php post_class(); ?>>
+			
+				<time class="date" datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar fa-lg"></i> <?php echo $date; ?></time>
+				
 				<h2 style="margin-top: 0px;"><?php the_title(); ?></h2>
 				
 				<?php the_content(); ?>
@@ -16,14 +52,18 @@
 	
 		</div>
 		
-		<aside class="sidebar col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-pull-8 col-md-offset-0 col-lg-4 col-lg-pull-7 col-lg-offset-0">
+		<aside class="sidebar single col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-pull-8 col-md-offset-0 col-lg-4 col-lg-pull-7 col-lg-offset-0">
 			
 			<?php get_sidebar('single'); ?>
 			
 		</aside>
 			
+
+	<?php } ?>
+	
 	</div>
 
+	
 </section>
 
 

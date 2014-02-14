@@ -4,34 +4,11 @@
 <?php 
 $intro = get_field('intro');
 $related_pages = get_field('page_links'); 
+
 ?>	
  
  	<div class="row">
- 	
- 		<?php if (isset($related_pages)) { ?>
- 		
- 		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
- 			
- 			<ul class="top-page-links">
- 			
- 			<?php foreach ($related_pages as $related_page) { 
-	 			
-	 			if ($related_page['link_title']) {
-		 			$title = $related_page['link_title'];
-	 			} else {
-		 			$title = $related_page['page']->post_title;
-	 			}
-	 			
- 			?>
- 				<li><a href="<?php echo get_permalink($related_page['page']->ID); ?>" title="<?php echo $title; ?>"><?php echo $title; ?></a></li>
- 			<?php } ?>
- 				
- 			</ul>
- 			
- 		</div>
- 		
- 		<?php }  ?>
- 	
+ 	 	
 	 	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
 	 	
 			<article <?php post_class(); ?>>
@@ -42,7 +19,8 @@ $related_pages = get_field('page_links');
 				<?php } ?>
 				
 				<?php the_content(); ?>
-			</article>
+				
+				</article>
 			
 	 	</div>
 		

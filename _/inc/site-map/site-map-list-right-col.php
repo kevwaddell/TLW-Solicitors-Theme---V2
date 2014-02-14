@@ -1,6 +1,6 @@
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 		
-	<h2><a href="<?php echo get_permalink($company_page->ID); ?>"><?php echo $company_page->post_title; ?></a></h2>
+	<h3><a href="<?php echo get_permalink($company_page->ID); ?>"><?php echo ($company_page_icon) ? '<i class="icon fa '.$company_page_icon.' f-lg"></i>': ''; ?><?php echo $company_page->post_title; ?><i class="fa fa-angle-right fa-lg"></i></a></h3>
 	
 	<?php if ($company_pages) { ?>
 		<div class="list-block">
@@ -16,7 +16,7 @@
 		</div>
 	<?php } ?>
 						
-	<h2><span>General</span></h2>
+	<h3><i class="icon fa fa-check fa-lg"></i>General</h3>
 	
 	<?php if ($rescources_pages) { ?>
 		<div class="list-block">
@@ -32,7 +32,7 @@
 		</div>
 	<?php } ?>
 	
-	<h2><span>Legal</span></h2>
+	<h3><i class="icon fa fa-gavel fa-lg"></i>Legal</h3>
 	
 	<?php if ($legal_pages) { ?>
 		<div class="list-block">

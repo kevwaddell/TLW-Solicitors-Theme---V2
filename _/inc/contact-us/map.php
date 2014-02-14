@@ -26,22 +26,6 @@
     
     directionsDisplay = new google.maps.DirectionsRenderer();
     
-    var featureOpts = [
-	    /*
-{
-      stylers: [
-        { hue: '#918e8e' }
-      ]
-    },
-    {
-      featureType: 'water',
-      stylers: [
-        { color: '#c60751' }
-      ]
-    }
-*/
-  ];
-    
 	var mapOptions = {
 		zoom: 12, 
 		center: myLatLang, 
@@ -63,18 +47,6 @@
 		directionsDisplay.setMap(map);
 		directionsDisplay.setPanel(document.getElementById('directions-panel'));
 		
-		/*
-var control = document.getElementById('control');
-		
-		var styledMapOptions = {
-			name: 'Custom Style'
-		};
-		
-		var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
-		
-		map.mapTypes.set(TLW_MAPTYPE_ID, customMapType);
-*/
-		
 	};
 	
 	function reset_map() {
@@ -88,8 +60,6 @@ var control = document.getElementById('control');
 	wrap.className = "directions-closed";
 	panel.innerHTML = "";
 	document.getElementById('start').value = "";
-	
-	
 	}
 	
 	function calcRoute() {
@@ -104,34 +74,31 @@ var control = document.getElementById('control');
 	  };
 	  directionsService.route(request, function(response, status) {
 	    if (status == google.maps.DirectionsStatus.OK) {
-	      directionsDisplay.setDirections(response);
-	      		  
+	      directionsDisplay.setDirections(response);	  
 		  marker.setMap(null);
 	      wrap.className = "directions-open";
+	      $('html,body').animate({scrollTop: $("#directions-panel-wrap").offset().top},'slow');
 	    }
 	  });
 	};
 	
-	google.maps.event.addDomListener(window, 'load', initialize);
-    $('.bxslider').bxSlider({
-        minSlides: 5,
-        maxSlides: 5,
-        slideWidth: 192,
-        slideMargin: 0,
-        adaptiveHeight: true
+	$(window).resize(function(){
+		map.setCenter(myLatLang); 
     });
-</script>
-	<div id="map-canvas" style="height: 420px; margin-top: -30px;"></div>
 	
-	<?php if (isset($intro)) { ?>
-	<p class="intro"><?php echo $intro ; ?></p>
-	<?php } ?>
+	google.maps.event.addDomListener(window, 'load', initialize);
+	
+</script>
+	<div id="map-canvas"></div>
 
-		
-	<div id="directions-panel-wrap">
+	<div id="directions-panel-wrap" class="hidden-xs">
 		<div class="panel-head">Your directions</div>
 		<div id="directions-panel"></div>
 	</div>
-	<button class="close-btn" onclick="reset_map();"><span class="glyphicon glyphicon-remove"></span></a>
+	<button class="close-btn hidden-xs" onclick="reset_map();"><span class="glyphicon glyphicon-remove"></span></a>
 	
 </section>
+
+<?php if (isset($intro)) { ?>
+<p class="intro lrg text-center"><?php echo $intro ; ?></p>
+<?php } ?>

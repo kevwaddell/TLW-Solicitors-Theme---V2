@@ -14,7 +14,21 @@
 	-moz-transition: all 150ms ease-in-out;
 	-ms-transition: all 150ms ease-in-out;
 	transition: all 150ms ease-in-out;
-	text-align: center;
+	text-align: left;
+}
+
+@media (min-width: 768px) {
+
+	.dropdown,
+	.dropdown div,
+	.dropdown li,
+	.dropdown div::after,
+	.dropdown .carat,
+	.dropdown .carat:after,
+	.dropdown .selected::after,
+	.dropdown:after{
+		text-align: center;
+	}
 }
 
 .dropdown .selected::after,

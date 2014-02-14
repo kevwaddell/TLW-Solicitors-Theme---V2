@@ -8,7 +8,7 @@ if ( !function_exists(core_mods) ) {
 			wp_register_script( 'jquery-cookie', get_stylesheet_directory_uri() . '/_/js/jquery.cookie.js', array('jquery'), '1.0.0', true );
 			wp_register_script( 'slim-scroll', get_stylesheet_directory_uri() . '/_/js/jquery.slimscroll.min.js', array('jquery'), '1.0.0', true );
 			wp_register_script( 'easy-dropdown', get_stylesheet_directory_uri() . '/_/js/jquery.easydropdown.min.js', array('jquery'), '1.0.0', true );
-			wp_register_script( 'bootstrap-tabs', get_stylesheet_directory_uri() . '/_/js/bootstrap-tabs.js', array('jquery'), '1.0.0', true );
+			wp_register_script( 'bootstrap-tabs', get_stylesheet_directory_uri() . '/_/js/bootstrap-tabs.js', array('jquery','jquery-ui-core'), '1.0.0', true );
 			wp_register_script( 'functions', get_stylesheet_directory_uri() . '/_/js/functions.js', array('jquery', 'jquery-ui-core', 'bootstrap-all-min', 'jquery-cookie', 'slim-scroll', 'bootstrap-tabs'), '1.0.1', true );
 			//wp_register_script( 'img-fit', get_stylesheet_directory_uri() . '/_/js/jquery.imagefit.js', array('jquery'), '1.0.0', true );
 			
@@ -37,6 +37,36 @@ if ( function_exists( 'register_nav_menus' ) ) {
 			)
 		);
 }
+
+if ( function_exists( 'register_sidebar' ) ) {
+	
+	$login_sb_args = array(
+	'name'          => "User actions",
+	'id'            => "user-actions",
+	'description'   => 'Area for logged in user widget',
+	'class'         => 'user-links',
+	'before_widget' => '',
+	'after_widget'  => '',
+	'before_title'  => '',
+	'after_title'   => '' 
+	);
+		
+	$newsletter_sb_args = array(
+	'name'          => "Newsletter Sign-up Form",
+	'id'            => "newsletter-signup-form",
+	'description'   => 'Newsletter signup widget',
+	'class'         => 'contact-form',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
+	'before_title'  => '<h3 class="widgettitle">',
+	'after_title'   => '</h3>' 
+	);
+	
+	
+	register_sidebar( $login_sb_args );
+	register_sidebar( $newsletter_sb_args );
+}
+
 
 add_theme_support( 'post-thumbnails', array( 'page', 'post' ) );
 

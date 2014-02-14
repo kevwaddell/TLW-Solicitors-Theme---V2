@@ -61,16 +61,26 @@ $page_icon = get_field('page_icon', $news_page->ID);
 	<div class="row">
 	
 		<aside class="sidebar col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-offset-0 col-lg-4 col-lg-offset-0">
-			<?php get_sidebar(); ?>
+			<?php get_sidebar('archive'); ?>
 		</aside>
 	
 		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-8 col-lg-offset-0">
 			
-			<h3 class="icon-header mag-bot-10 hidden-xs hidden-sm">
+			<h3 class="icon-header mag-bot-10">
 			<?php if (isset($page_icon)) { ?>
 				<i class="fa <?php echo $page_icon; ?> fa-lg"></i> 
 			<?php } ?>
-			Latest News
+			<?php
+			if ( is_day() ) :
+			printf( __( 'Daily Archives: %s', 'tlwsolicitors' ), get_the_date() );
+			elseif ( is_month() ) :
+			printf( __( 'Monthly Archives: %s', 'tlwsolicitors' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'tlwsolicitors' ) ) );
+			elseif ( is_year() ) :
+			printf( __( 'Yearly Archives: %s', 'tlwsolicitors' ), get_the_date( _x( 'Y', 'yearly archives date format', 'tlwsolicitors' ) ) );
+			else :
+			_e( 'Archives' );
+			endif;
+			?>
 			</h3>
 			
 			<?php if ( have_posts() ): ?>
@@ -84,11 +94,10 @@ $page_icon = get_field('page_icon', $news_page->ID);
 					<div class="page-num hidden-xs hidden-sm">
 					<?php wp_pagenavi(); ?>
 					</div>
-				
 					
-						<?php while ( have_posts() ) : the_post();
-						$date = get_the_date('l - jS F - Y');
-						 ?>	
+						<?php while ( have_posts() ) : the_post(); 
+							$date = get_the_date('l - jS F - Y');
+						?>	
 					
 						<?php if (has_post_thumbnail()) { 
 							$img_atts = array('class'	=> "img-responsive");	
@@ -104,7 +113,7 @@ $page_icon = get_field('page_icon', $news_page->ID);
 									
 									<div class="colxs-12 col-sm-7 col-md-7 col-lg-7">
 										<h4><?php the_title(); ?></h4>
-										<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar"></i> <?php echo $date; ?>></time>
+										<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar"></i> <?php echo $date; ?></time>
 										<?php the_excerpt(); ?>
 									</div>
 								
@@ -127,9 +136,11 @@ $page_icon = get_field('page_icon', $news_page->ID);
 		
 						<?php endwhile; ?>
 						
+									
 						<div class="page-links">
 							<?php wp_pagenavi(); ?>
-						</div>					
+						</div>
+										
 					</div>
 						
 				</div>
@@ -138,7 +149,6 @@ $page_icon = get_field('page_icon', $news_page->ID);
 			
 			<?php else: ?>
 			<h2>No posts to display</h2>
-	
 			<?php endif; ?>
 			
 		</div><!-- End Col -->

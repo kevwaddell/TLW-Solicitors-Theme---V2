@@ -61,7 +61,7 @@ $intro = get_field('intro');
 				</div>
 				
 				
-				<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-7 col-lg-offset-0">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-7 col-md-offset-0 col-lg-7 col-lg-offset-0">
 				
 				<h2 style="margin-top: 0px;"><?php the_title(); ?></h2>
 				
@@ -94,42 +94,34 @@ $intro = get_field('intro');
 				<?php foreach ($children as $child) { 
 				
 				$page_icon = get_field('page_icon', $child->ID);
+				$exclude = array(18, 22);
 				
-				if (isset($page_icon)) {
+				if (!empty($page_icon)) {
 				$icon = '<i class="fa '.$page_icon.' fa-lg icon"></i>';
 				} else {
 				$icon = "";		
 				}
 				
 				if ($current_post->post_parent != 0) {
-					
-					if ($current_post->ID == $child->ID) {
-					$link = '<li class="active">';
-					} else {
-					$link = '<li>';	
-					}
-					
-				$link .= '<a href="'.  get_permalink($child->ID) .'" title="'. $child->post_title .'">'. $icon . $child->post_title .'<i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>';	
+				$current_id = $current_post->ID;
+				$url = get_permalink($child->ID);	
+				$tab_toggle = false;
+	
 				} else {
-				
-					if ($active_child->ID == $child->ID) {
-					$link = '<li class="active">';
-					} else {
-					$link = '<li>';	
-					}
-					
-				$link .= '<a href="#'.  $child->post_name .'-panel" data-toggle="tab" title="'. $child->post_title .'">'. $icon . $child->post_title .'<i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>';			
+				$current_id = $active_child->ID;
+				$tab_toggle = true;
+				$url = '#'.$child->post_name;	
 				}	
-				 
-				$link .= '</li>';	
 				
 				?>
-				<?php echo $link; ?>
+				
+				<li<?php echo ($current_id == $child->ID) ? ' class="active"':''; ?>>
+					<a href="<?php echo $url; ?>"<?php echo ($tab_toggle) ? ' data-toggle="tab"': ''; ?> title="<?php echo $child->post_title; ?>"><?php echo $icon; ?><span><?php echo $child->post_title; ?></span><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>
+				</li>
 				
 				<?php } ?>
 				
 				<?php if ($extra_children) { ?>
-				
 					<?php foreach ($extra_children as $extra_child) { 
 					$page_icon = get_field('page_icon', $extra_child->ID);
 					
@@ -139,21 +131,15 @@ $intro = get_field('intro');
 					
 					?>
 					<li>
-					<a href="<?php echo get_permalink($extra_child->ID); ?>" title="<?php echo $extra_child->post_title; ?>">
-					<?php echo ($icon) ? $icon : ""; ?>
-					<?php echo $extra_child->post_title; ?>
-					<i class="fa fa-angle-right fa-lg"></i>
-					<i class="fa fa-angle-down fa-lg"></i>
-					</a>
+					<a href="<?php echo get_permalink($extra_child->ID); ?>" title="<?php echo $extra_child->post_title; ?>"><?php echo ($icon) ? $icon : ""; ?><span><?php echo $extra_child->post_title; ?></span><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>
 					</li>
 					<?php } ?>
-				
 				<?php } ?>
 				
 				</ul>
 			</aside>
 			
-			<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-7 col-lg-offset-0">
+			<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0 col-lg-8 col-lg-offset-0">
 				
 				<div class="tab-content">
 				
@@ -167,52 +153,52 @@ $intro = get_field('intro');
 				//echo '<pre>';print_r($rel_pages);echo '</pre>';
 				?>
 				
-				<article class="page tabs-panel" id="<?php echo $post->post_name; ?>-panel">
+				<article class="page tabs-panel" id="<?php echo $post->post_name; ?>">
 				
 					<h3 class="icon-header">
 						<?php if (isset($page_icon)) { ?>
-						<i class="fa <?php echo $page_icon; ?>"></i> 
+						<i class="fa <?php echo $page_icon; ?> fa-lg"></i> 
 						<?php } ?>
 						<?php echo $active_child->post_title; ?>
 					</h3>
 					
-					<?php if (isset($sub_intro)) : ?>
-						<p class="intro"><?php echo $sub_intro ; ?></p>
-					<?php endif; ?>
+					<div class="row">
 					
-					<?php echo $page_content; ?>
-					
-					<?php if (isset($rel_pages)) { ?>
+						<div class="col-xs-12 col-sm-12 col-md-11 col-lg-11">
 						
-						<?php foreach ($rel_pages as $rel_page) { 
-							
-							if ($rel_page['link_title']) {
-							$title = $rel_page['link_title'];
-							} else {
-							$title = $rel_page['page']->post_title;		
-							}
-							
-							$icon = get_field('page_icon', $rel_page['page']->ID);
-						?>
+						<?php if (isset($sub_intro)) : ?>
+							<p class="intro"><?php echo $sub_intro ; ?></p>
+						<?php endif; ?>
 						
-						<div class="clearfix">
-							<a href="<?php echo get_permalink($rel_page['page']->ID) ; ?>" title="<?php echo $title; ?>" class="icon-btn clearfix col-xs-12 col-sm-12 col-md-7 col-lg-7">
+						<?php echo $page_content; ?>
+						
+						<?php if (isset($rel_pages)) { ?>
 							
-							<?php if ($icon) { ?>
-							<i class="fa <?php echo $icon; ?> fa-lg icon"></i>
+							<?php foreach ($rel_pages as $rel_page) { 
+								
+								if ($rel_page['link_title']) {
+								$title = $rel_page['link_title'];
+								} else {
+								$title = $rel_page['page']->post_title;		
+								}
+								
+								$icon = get_field('page_icon', $rel_page['page']->ID);
+							?>
+							
+							<div class="clearfix">
+								<a href="<?php echo get_permalink($rel_page['page']->ID) ; ?>" title="<?php echo $title; ?>" class="icon-btn clearfix col-xs-12 col-sm-12 col-md-7 col-lg-7"><?php if ($icon) { ?><i class="fa <?php echo $icon; ?> fa-lg icon"></i><?php } ?><?php echo $title; ?><i class="fa fa-angle-right fa-lg"></i></a>
+							</div>
 							<?php } ?>
-							<?php echo $title; ?>
-							<i class="fa fa-angle-right fa-lg"></i>
 							
-							</a>
-						</div>
 						<?php } ?>
 						
-					<?php } ?>
+						<?php if ($active_child->post_name == "company-profile") { ?>
+						 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span>0800 169 5925</span></p>
+						<?php }  ?>
+						
+						</div>
 					
-					<?php if ($active_child->post_name == "company-profile") { ?>
-					 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span>0800 169 5925</span></p>
-					<?php }  ?>
+					</div>
 					
 				</article>
 				
@@ -225,7 +211,7 @@ $intro = get_field('intro');
 				$rel_pages = get_field('page_links');
 				?>
 		
-				<article class="page tab-pane tabs-panel fade<?php echo ($post->ID == $active_child->ID) ? ' in active':''; ?>" id="<?php echo $post->post_name; ?>-panel">
+				<article class="page tab-pane tabs-panel fade<?php echo ($post->ID == $active_child->ID) ? ' in active':''; ?>" id="<?php echo $post->post_name; ?>">
 					
 					<h3 class="icon-header">
 					<?php if (isset($page_icon)) { ?>
@@ -234,41 +220,49 @@ $intro = get_field('intro');
 					<?php the_title(); ?>
 					</h3>
 					
-					<?php if (isset($sub_intro)) { ?>
-					<p class="intro"><?php echo $sub_intro ; ?></p>
-					<?php } ?>
+					<div class="row">
 					
-					<?php the_content(); ?>
-					
-					<?php if (isset($rel_pages)) { ?>
+						<div class="col-xs-12 col-sm-12 col-md-11 col-lg-11">
 						
-						<?php foreach ($rel_pages as $rel_page) { 
-							
-							if ($rel_page['link_title']) {
-							$title = $rel_page['link_title'];
-							} else {
-							$title = $rel_page['page']->post_title;	
-							}
-							
-							$icon = get_field('page_icon', $rel_page['page']->ID);
-						?>
-						<div class="clearfix">
-							<a href="<?php echo get_permalink($rel_page['page']->ID) ; ?>" title="<?php echo $title; ?>" class="icon-btn clearfix col-xs-12 col-sm-12 col-md-7 col-lg-7">
-							<?php if ($icon) { ?>
-							<i class="fa <?php echo $icon; ?> fa-lg icon"></i>
-							<?php } ?>
-							<?php echo $title; ?>
-							<i class="fa fa-angle-right fa-lg"></i>
-							</a>
-						</div>
-						
+						<?php if (isset($sub_intro)) { ?>
+						<p class="intro"><?php echo $sub_intro ; ?></p>
 						<?php } ?>
 						
-					<?php } ?>
+						<?php the_content(); ?>
+						
+						<?php if (isset($rel_pages)) { ?>
+							
+							<?php foreach ($rel_pages as $rel_page) { 
+								
+								if ($rel_page['link_title']) {
+								$title = $rel_page['link_title'];
+								} else {
+								$title = $rel_page['page']->post_title;	
+								}
+								
+								$icon = get_field('page_icon', $rel_page['page']->ID);
+							?>
+							<div class="clearfix">
+								<a href="<?php echo get_permalink($rel_page['page']->ID) ; ?>" title="<?php echo $title; ?>" class="icon-btn clearfix col-xs-12 col-sm-12 col-md-7 col-lg-7">
+								<?php if ($icon) { ?>
+								<i class="fa <?php echo $icon; ?> fa-lg icon"></i>
+								<?php } ?>
+								<?php echo $title; ?>
+								<i class="fa fa-angle-right fa-lg"></i>
+								</a>
+							</div>
+							
+							<?php } ?>
+							
+						<?php } ?>
+						
+						<?php if ($post->post_name == "company-profile") { ?>
+						 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span>0800 169 5925</span></p>
+						<?php }  ?>
+						
+						</div>
 					
-					<?php if ($post->post_name == "company-profile") { ?>
-					 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span>0800 169 5925</span></p>
-					<?php }  ?>
+					</div>
 					
 				</article>
 				

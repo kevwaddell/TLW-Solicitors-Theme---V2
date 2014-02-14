@@ -1,66 +1,36 @@
 <?php 
+$news_page_ID = get_option('page_for_posts');
+$news_page = get_page($news_page_ID);
+
 $topics_args = array(
 	'orderby'            => 'meta_value',
-	'hierarchical'       => 1,
+	'hierarchical'       => 0,
 	'title_li'           => "",
 	'show_option_none'   => __('No Categories'),
 	'echo'               => 0,
-	'taxonomy'           => 'category'
+	'taxonomy'           => 'category',
+	'exclude'		     => 1
 	);
 	
+if (is_home()) {
+$topics_args['current_category'] = 1;	
+}
+
 $topics = wp_list_categories($topics_args);
 ?>
 
-<?php if ($topics) { ?>
+<ul class="list-unstyled tab-links">
+	<li class="cat-item<?php echo (is_home()) ? ' current-cat' : ''; ?>"><a href="<?php echo get_permalink($news_page_ID); ?>" title="View all posts filed under Latest <?php echo $news_page->post_title; ?>">Latest <?php echo $news_page->post_title; ?></a></li>
+	<?php if ($topics) { ?>
+	<?php echo $topics; ?>
+	<?php }  ?>
+</ul>
 
-<div class="sidebar-block">
-	<ul class="links">
-		<?php echo $topics; ?>
-	</ul>
-</div>
+<?php include (STYLESHEETPATH . '/_/inc/sidebar/social-feed.php'); ?>
 
-<?php }  ?>
-
-<div class="sidebar-feeds-block">
-	
-	<ul>
-		<li class="active"><a href="#twitter-feed" data-toggle="tab" title="Twitter"><i class="fa fa-twitter fa-lg"></i><span class="sr-only">Twitter</span></a></li>
-		<li><a href="#facebook-feed" data-toggle="tab" title="Twitter"><i class="fa fa-facebook fa-lg"></i><span class="sr-only">Facebook</span></a></li>
-		<li><a href="#google-plus-feed" data-toggle="tab" title="Twitter"><i class="fa fa-google-plus fa-lg"></i><span class="sr-only">Google+</span></a></li>
-	</ul>
-	
-	<div class="tab-content sidebar-tab-content">
-		
-		<div id="twitter-feed" class="tab-pane in active">
-			<div class="feed-wrap">
-			<p>Twitter</p>	
-				
-			</div>
-			
-			<a href="https://twitter.com/TLWSolicitors" class="feed-link" target="_blank">View page <i class="fa fa-angle-right"></i></a>
-		</div>
-		
-		<div id="facebook-feed" class="tab-pane">
-			<div class="feed-wrap">
-			<p>Facebook</p>	
-				
-			</div>
-			
-			<a href="http://facbook.com/" class="feed-link" target="_blank">View page <i class="fa fa-angle-right"></i></a>
-		</div>
-		
-		<div id="google-plus-feed" class="tab-pane">
-			<div class="feed-wrap">
-			<p>Google+</p>	
-				
-			</div>
-			
-			<a href="https://plus.google.com/+TlwsolicitorsCoUk" class="feed-link" target="_blank">View page <i class="fa fa-angle-right"></i></a>
-		</div>
-
-		
+<div class="side-search-block">
+	<button class="icon-header dropdown-head search-head-btn" data-toggle="collapse" data-target="#search-form"><i class="icon fa fa-search fa-lg"></i>Search<i class="fa fa-angle-down fa-lg"></i></button>
+	<div id="search-form" class="sidebar-block-inner collapse">
+		<?php get_search_form(); ?>
 	</div>
-	
-	
-
 </div>

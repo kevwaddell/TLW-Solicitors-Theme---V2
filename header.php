@@ -68,7 +68,7 @@
 						<h1 class="text-hide"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 					</div>
 					
-					<button id="nav-btn" class="visible-xs"><i class="fa fa-bars fa-lg"></i><span class="sr-only">Navigation</span></button>
+					<button id="nav-btn" class="visible-xs in-active"><i class="fa fa-bars fa-lg"></i><span class="sr-only">Navigation</span></button>
 					
 					<div class="col-xs-6 col-sm-6 col-md-5 col-lg-4">
 						<nav id="main-nav" class="nav-closed">
@@ -92,7 +92,7 @@
 	<?php if (!is_front_page()) { ?>
 	<div class="container">		
 		<?php if ( function_exists('yoast_breadcrumb') ) {
-			yoast_breadcrumb('<div id="breadcrumbs">','</div>');
+			yoast_breadcrumb('<div id="breadcrumbs"><div class="row"><div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0 col-lg-12 col-lg-offset-0">','</div></div></div>');
 		} ?>	
 	</div>			
 	<?php }  ?>

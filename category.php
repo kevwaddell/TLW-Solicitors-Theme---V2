@@ -70,7 +70,7 @@ $page_icon = get_field('page_icon', $news_page->ID);
 			<?php if (isset($page_icon)) { ?>
 				<i class="fa <?php echo $page_icon; ?> fa-lg"></i> 
 			<?php } ?>
-			Latest News
+			<?php single_cat_title(); ?>
 			</h3>
 			
 			<?php if ( have_posts() ): ?>
@@ -84,11 +84,10 @@ $page_icon = get_field('page_icon', $news_page->ID);
 					<div class="page-num hidden-xs hidden-sm">
 					<?php wp_pagenavi(); ?>
 					</div>
-				
 					
-						<?php while ( have_posts() ) : the_post();
-						$date = get_the_date('l - jS F - Y');
-						 ?>	
+						<?php while ( have_posts() ) : the_post(); 
+							$date = get_the_date('l - jS F - Y');
+						?>	
 					
 						<?php if (has_post_thumbnail()) { 
 							$img_atts = array('class'	=> "img-responsive");	
@@ -98,13 +97,13 @@ $page_icon = get_field('page_icon', $news_page->ID);
 							<a href="<?php esc_url( the_permalink() ); ?>" title="View <?php the_title_attribute(); ?> article" rel="bookmark">
 								<div class="row">
 									
-									<div class="hidden-xs col-sm-5 col-md-5 col-lg-5">
+									<div class="hidden-xs col-sm-5 col-md-5 col-lg-4">
 									 <?php the_post_thumbnail( 'post-list-img' , $img_atts); ?> 
 									</div>
 									
-									<div class="colxs-12 col-sm-7 col-md-7 col-lg-7">
+									<div class="colxs-12 col-sm-7 col-md-7 col-lg-8">
 										<h4><?php the_title(); ?></h4>
-										<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar"></i> <?php echo $date; ?>></time>
+										<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar"></i> <?php echo $date; ?></time>
 										<?php the_excerpt(); ?>
 									</div>
 								
@@ -127,9 +126,11 @@ $page_icon = get_field('page_icon', $news_page->ID);
 		
 						<?php endwhile; ?>
 						
+									
 						<div class="page-links">
 							<?php wp_pagenavi(); ?>
-						</div>					
+						</div>
+										
 					</div>
 						
 				</div>
@@ -138,7 +139,6 @@ $page_icon = get_field('page_icon', $news_page->ID);
 			
 			<?php else: ?>
 			<h2>No posts to display</h2>
-	
 			<?php endif; ?>
 			
 		</div><!-- End Col -->

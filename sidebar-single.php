@@ -8,13 +8,12 @@ $img_atts = array('class'	=> "img-responsive");
 <?php }  ?>
 
 <?php 
-$post_categories = get_the_category_list('', 'single', $post->ID);
+$post_categories = get_the_category_list();
+//echo '<pre>';print_r($post_categories);echo '</pre>';
 
 if ($post_categories) { ?>
 
-<div class="sidebar-block">
-	<?php echo $post_categories; ?>
-</div>
+<?php echo $post_categories; ?>
 
 <?php } ?>
 
@@ -28,8 +27,8 @@ if ($gallery_imgs) {
 ?>
 <div class="sidebar-block">
 	
-	<h3>Gallery images</h3>
-	<ul class="img-links">
+	<h3>Image Gallery</h3>
+	<ul class="list-unstyled img-links clearfix">
 <?php foreach( $gallery_imgs as $gallery_img ): 
 		if ($gallery_img['alt']) {
 		$alt = $gallery_img['alt'];
@@ -37,8 +36,7 @@ if ($gallery_imgs) {
 		?>
 		<li>
 			<a href="<?php echo $gallery_img['sizes']['medium']; ?>" rel="fancybox" class="zoomable">
-				<img src="<?php echo $gallery_img['sizes']['gallery-img']; ?>" width="<?php echo $gallery_img['sizes']['gallery-img-width']; ?>" height="<?php echo $gallery_img['sizes']['gallery-img-height']; ?>"<?php echo ($alt) ? ' alt="'.$alt.'"': ''; ?>>
-				<div class="zoom-icon"><i class="fa fa-search-plus"></i></div>
+				<img src="<?php echo $gallery_img['sizes']['gallery-img']; ?>" class="img-responsive" width="<?php echo $gallery_img['sizes']['gallery-img-width']; ?>" height="<?php echo $gallery_img['sizes']['gallery-img-height']; ?>"<?php echo ($alt) ? ' alt="'.$alt.'"': ''; ?>>
 			</a>
 		</li>
 <?php endforeach; ?>

@@ -11,6 +11,7 @@ $practices = get_posts($practices_args);
 //echo '<pre>';print_r($practices);echo '</pre>';
 
 $company_page = get_page_by_title('About TLW');
+$company_page_icon = get_field('page_icon', $company_page->ID);
 
 $company_args = array(
 'post_type'		=> 'page',
@@ -41,6 +42,7 @@ $legal_pages = get_posts($legal_args);
 
 $news_page_ID = get_option('page_for_posts');
 $news_page = get_page($news_page_ID);
+$news_page_icon = get_field('page_icon', $news_page->ID);
 
 $topics_args = array(
 	'type'			=> 'post',
@@ -50,6 +52,15 @@ $topics_args = array(
 	'order'			=> 'desc'
 ); 
 $topics = get_categories($topics_args);
+
+$subjects_args = array(
+	'type'			=> 'post',
+	'hide_empty'	=> 0,
+	'parent'		=> 0,
+	'orderby'		=> 'meta_value',
+	'order'			=> 'desc'
+); 
+$subjects = get_tags($subjects_args);
 
 //echo '<pre>';print_r($topics);echo '</pre>';
 

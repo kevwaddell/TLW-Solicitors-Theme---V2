@@ -1,7 +1,8 @@
 (function($){
 
 	var event_type;
-
+	var url = document.location.toString();
+	
 	if (Modernizr.touch){
 	
 	 event_type = 'touchstart';
@@ -62,17 +63,21 @@
 	
 	$('body').on(event_type,'button#nav-btn', function(e){
 	
-	console.log(e);
-	
 		if ( $('#main-nav').hasClass('nav-closed') ) {
+			$(this).removeClass('in-active').addClass('active');
 			$('.nav-closed').removeClass('nav-closed').addClass('nav-open');
 		} else {
+			$(this).removeClass('active').addClass('in-active');
 			$('.nav-open').removeClass('nav-open').addClass('nav-closed');
 		}
 		
 		return false;
 		
 	});
+	
+	var window_width = $(window).width(); 
+	
+	if (window_width > 760) {
 	
 	// Touch events
 	$('#main-nav').not('.nav-open').on('touchend', 'li.with-sub-nav > a', function(e){
@@ -91,9 +96,56 @@
 	   
 	});
 	
+	}
+	
+	$('body').on(event_type,'button#user-btn', function(e){
+	
+		if ( $(this).parent().hasClass('closed') ) {
+			$(this).parent().removeClass('closed').addClass('open');
+		} else {
+			$(this).parent().removeClass('open').addClass('closed');
+		}
+		
+		return false;
+		
+	});
+	
 	$('body').on('click', "li.services > a", function(){
 	return false;	
 	});
+	
+	if (event_type == "touchstart") {
+		$('a[data-toggle="tab"]').on("touchend", function (e) {
+			
+			 $('html,body').animate({scrollTop: $(".tab-content").offset().top},'slow');
+			
+			$(this).tab('show');
+		});
+	} else {
+		
+		$('a[data-toggle="tab"]').on("click", function (e) {
+			
+			 $('html,body').animate({scrollTop: $(".tab-content").offset().top},'slow');
+			
+			$(this).tab('show');
+		});
+	}
+	
+	 /* FEED SCROLLER 
+	   
+	Adds new styled scroll bars to media feeds   
+   */
+   	
+	$('.feed-wrap').slimScroll({
+        height: '300px'
+    });
+    
+    $('#directions-panel').slimScroll({
+        height: '300px',
+       alwaysVisible: true
+    });
+
+
 	
 	$(document).ready(function (){
 	
@@ -109,5 +161,14 @@
 		}
 	
 	});
+	
+	$(window).on("resize", function(e){
+	
+	if ($('#main-nav').hasClass('nav-open')) {
+		$('button#nav-btn').trigger(event_type);
+	}
+
+	});
+	
 	
 })(window.jQuery);
