@@ -115,7 +115,7 @@
 	});
 	
 	if (event_type == "touchstart") {
-		$('a[data-toggle="tab"]').on("touchend", function (e) {
+		$('ul.tab-links a[data-toggle="tab"]').on("touchend", function (e) {
 			
 			 $('html,body').animate({scrollTop: $(".tab-content").offset().top},'slow');
 			
@@ -123,7 +123,7 @@
 		});
 	} else {
 		
-		$('a[data-toggle="tab"]').on("click", function (e) {
+		$('ul.tab-links a[data-toggle="tab"]').on("click", function (e) {
 			
 			 $('html,body').animate({scrollTop: $(".tab-content").offset().top},'slow');
 			

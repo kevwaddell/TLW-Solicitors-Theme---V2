@@ -13,6 +13,8 @@ $post_ID = $post->post_parent;
 $post_ID = $post->ID;	
 }
 
+$news_page = get_page_by_title("News");
+
 $extra_child_args =  array(
 	'sort_column' => 'menu_order',
 	'hierarchical' => 0,
@@ -121,6 +123,18 @@ $intro = get_field('intro');
 				
 				<?php } ?>
 				
+				<?php if ($news_page) { 
+				$page_icon = get_field('page_icon', $news_page->ID);
+				
+				if (isset($page_icon)) {
+				$icon = '<i class="fa '.$page_icon.' fa-lg icon"></i>';
+				}
+				?>
+				<li>
+					<a href="<?php echo get_permalink($news_page->ID); ?>" title="Latest <?php echo $news_page->post_title; ?>"><?php echo ($icon) ? $icon : ""; ?><span>TLW <?php echo $news_page->post_title; ?></span><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>
+				</li>
+				<?php } ?>
+				
 				<?php if ($extra_children) { ?>
 					<?php foreach ($extra_children as $extra_child) { 
 					$page_icon = get_field('page_icon', $extra_child->ID);
@@ -131,7 +145,7 @@ $intro = get_field('intro');
 					
 					?>
 					<li>
-					<a href="<?php echo get_permalink($extra_child->ID); ?>" title="<?php echo $extra_child->post_title; ?>"><?php echo ($icon) ? $icon : ""; ?><span><?php echo $extra_child->post_title; ?></span><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>
+					<a href="<?php echo get_permalink($extra_child->ID); ?>" title="<?php echo ($extra_child->post_title == "News") ? "Latest ":""; ?><?php echo $extra_child->post_title; ?>"><?php echo ($icon) ? $icon : ""; ?><span><?php echo ($extra_child->post_title == "News") ? "Latest ":""; ?><?php echo $extra_child->post_title; ?></span><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>
 					</li>
 					<?php } ?>
 				<?php } ?>
@@ -215,7 +229,7 @@ $intro = get_field('intro');
 					
 					<h3 class="icon-header">
 					<?php if (isset($page_icon)) { ?>
-					<i class="fa <?php echo $page_icon; ?>"></i> 
+					<i class="fa <?php echo $page_icon; ?> fa-lg"></i> 
 					<?php } ?>
 					<?php the_title(); ?>
 					</h3>

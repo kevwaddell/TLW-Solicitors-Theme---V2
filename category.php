@@ -45,7 +45,9 @@ $page_icon = get_field('page_icon', $news_page->ID);
 			
 			<div class="row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-7 col-md-offset-4 col-lg-7 col-lg-offset-4">
-					<time class="date-today text-center" datetime="<?php the_time( 'Y-m-d' ); ?>"><i class="fa fa-calendar fa-lg"></i> <?php echo date('l - jS F - Y', time()); ?></time>
+					<div id="search-form">
+						<?php get_search_form(); ?>
+					</div>
 				</div>
 			</div>
 			

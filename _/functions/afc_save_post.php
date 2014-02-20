@@ -29,6 +29,18 @@ function my_acf_save_post( $post_id )
 		 
 	}	
 	
+	if ($current_screen->id == 'page') {
+		
+		//echo '<pre>';print_r($_POST['fields']);echo '</pre>';
+		
+		if (!empty($_POST['fields']['field_52e7b4aab5b09']) ) {
+		$into = $_POST['fields']['field_52e7b4aab5b09'];
+		
+		wp_update_post( array( 'ID' => $post_id, 'post_excerpt' => $into ) );
+		}	
+		 
+	}	
+
 	
 }
  

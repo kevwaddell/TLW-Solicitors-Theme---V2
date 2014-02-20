@@ -14,10 +14,16 @@ aside.sidebar {
 	h3 {
 	.col(@red);	
 	.font-size(1.6);
+	.line-h(4);	
+	.h(4);
+	.mag-bot(0);
+	
 	text-align: center;
 		
 		@media (min-width: @screen-md) {
 		.font-size(1.8);	
+		.line-h(5);	
+		.h(5);
 		}
 		
 	}
@@ -25,6 +31,11 @@ aside.sidebar {
 	ul.tab-links {
 	.rel;
 	.mag-bot(3);
+	
+		@media (min-width: @screen-md) {
+		.mag-bot(0);
+		}
+		
 		li {
 		.block;
 		
@@ -187,60 +198,7 @@ aside.sidebar {
 		
 		
 	}//links-list
-	
-	.side-search-block {
-	.mag-bot(3);	
-		@media (min-width: @screen-md) {
-		.mag-bot(0);	
-		}
-	}
-	
-	#search-form {
-	
-		input.search-query {
-		.no-rounded;
-		.border-col(@gray);	
-		.mag-bot(1);
-		}	
 		
-		.search-submit {
-		.mag-auto;
-		width: 100%;
-		.no-border;
-		.no-rounded;
-		.bg-col(@grayDk);
-		.col(white);
-		.h(3);
-		.pad-all(0);
-		text-align: left;
-		.indent(1);
-		
-			&:hover, &:active, &:focus {
-			.bg-col(@gray);	
-			}
-		}
-		
-		.search-btn-wrap {
-		.mag-auto;	
-		width: 100%;
-		.rel;
-		}
-		
-		.btn-pointer {
-		.abs;
-		.right(0);
-		.top(0);
-		.h(3);
-		.w(3);
-		.line-h(3);
-		.bg-col(@red);
-		.col(white);
-		.in-block;
-		text-align: center;
-		}
-
-	}
-	
 	button.icon-header {
 	.font-size(1.6);
 	.line-h(4);	

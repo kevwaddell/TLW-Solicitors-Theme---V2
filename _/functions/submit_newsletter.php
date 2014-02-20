@@ -1,41 +1,44 @@
 <?php
-add_action('gform_after_submission_13', 'post_to_third_party', 10, 2);
+add_action('gform_after_submission_3', 'post_to_third_party', 10, 2);
+
 function post_to_third_party($entry, $form) {
 
+	
+	//echo '<pre>';print_r($entry);echo '</pre>';
 
 	$post_url = $entry['4'];
 	
-	if ($entry['3.1'] == 'Clinical Negligence') {
+	if (isset($entry['3.1']) && $entry['3.1'] == 'Clinical Negligence') {
 	$clin_neg = 'y';
 	} else {
 	$clin_neg = 'n';	
 	}
 	
-	if ($entry['3.2'] == 'Personal Injury') {
+	if (isset($entry['3.2']) && $entry['3.2'] == 'Personal Injury') {
 	$pers_inj = 'y';
 	} else {
 	$pers_inj = 'n';	
 	}
 	
-	if ($entry['3.3'] == 'Road Traffic Accidents') {
+	if (isset($entry['3.3']) && $entry['3.3'] == 'Road Traffic Accidents') {
 	$rta = 'y';
 	} else {
 	$rta = 'n';	
 	}
 	
-	if ($entry['3.4'] == 'Financial Mis-selling') {
+	if (isset($entry['3.4']) && $entry['3.4'] == 'Financial Mis-selling') {
 	$fin_mis = 'y';
 	} else {
 	$fin_mis = 'n';	
 	}
 	
-	if ($entry['3.5'] == 'Professional Negligence') {
+	if (isset($entry['3.5']) && $entry['3.5'] == 'Professional Negligence') {
 	$prof_neg = 'y';
 	} else {
 	$prof_neg = 'n';	
 	}
 	
-	if ($entry['3.6'] == 'Commercial Litigation') {
+	if (isset($entry['3.6']) && $entry['3.6'] == 'Commercial Litigation') {
 	$com_lit = 'y';
 	} else {
 	$com_lit = 'n';
@@ -55,6 +58,8 @@ function post_to_third_party($entry, $form) {
         'cd_PROF_NEG_radio' => $prof_neg,
         'cd_COM_LIT_radio' => $com_lit
         );
+        
+    // echo '<pre>';print_r($body);echo '</pre>';
     
     $request = new WP_Http();
     $response = $request->post($post_url, array('body' => $body));   

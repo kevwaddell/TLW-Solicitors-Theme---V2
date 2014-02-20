@@ -1,6 +1,12 @@
 <?php get_header(); ?>
 
-<?php $search_query = get_search_query(); ?>
+<?php 
+$allsearch = new WP_Query("s=$s&showposts=-1"); 
+wp_reset_query();
+$search_count = $allsearch->post_count;
+$search_query = get_search_query(); 
+//echo '<pre>';print_r($posts);echo '</pre>';
+?>
 
 <div class="row">
  	
@@ -8,7 +14,7 @@
  
 		<article class="page">
 			<h2 class="text-center">Search Results</h2>
-			<p class="intro text-center">You Searched for: "<?php echo $search_query; ?>"</p>
+			<p class="intro text-center">You Searched for: "<?php the_search_query(); ?>"<br> Results: <?php echo $search_count; ?></p>
 			
 			<div class="search-form-wrap">
 			<?php get_search_form(); ?>
@@ -33,13 +39,8 @@
 								<?php if ($post->post_type == 'post') { ?>
 								<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar"></i> <?php echo $date; ?></time>
 								<?php } ?>
-								
-								<?php if (empty($intro)) { ?>
-								<?php the_excerpt(); ?>
-								<?php } else { ?>
-								<p><?php echo $intro; ?></p>
-								<?php } ?>
-								
+										
+								<?php the_excerpt(); ?>	
 								
 							</a>
 						</article>

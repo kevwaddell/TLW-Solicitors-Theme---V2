@@ -36,6 +36,7 @@
 	
 	.sidebar-tab-content {
 	.pad-top(2);
+	.pad-bot(2);
 	
 		.feed-wrap {
 		.h(30);
@@ -58,7 +59,11 @@
 				.font-size(1.4);
 				
 					a {
-					.no-text-dec;	
+					.no-text-dec;
+					.col(@grayDk);
+						&:hover, &:active, &:focus {
+						.col(@gray);	
+						}	
 					}	
 				}
 				
