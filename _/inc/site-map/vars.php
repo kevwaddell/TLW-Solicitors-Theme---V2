@@ -47,7 +47,7 @@ $news_page_icon = get_field('page_icon', $news_page->ID);
 $topics_args = array(
 	'type'			=> 'post',
 	'hide_empty'	=> 0,
-	'parent'		=> 0,
+	'hierarchical'       => 0,
 	'orderby'		=> 'meta_value',
 	'order'			=> 'desc'
 ); 

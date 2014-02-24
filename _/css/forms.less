@@ -31,7 +31,7 @@ max-width: 100% !important;
 .mag-all(0) !important;
 
 	input, textarea {
-	.no-rounded;	
+	.no-rounded;
 	}
 	
 	input[type=text],
@@ -41,6 +41,7 @@ max-width: 100% !important;
 	input[type=number],
 	input[type=password] {
 	.font-size(1.4);
+	.border(@gray, 0.1);
 		
 		@media (min-width: @screen-sm) {
 		.font-size(1.6);
@@ -49,6 +50,7 @@ max-width: 100% !important;
 	
 	textarea {
 	.font-size(1.4);
+	.border(@gray, 0.1);
 	
 		@media (min-width: @screen-sm) {
 		.font-size(1.6);
@@ -196,7 +198,7 @@ max-width: 100% !important;
 	
 	input.search-query {
 	.no-rounded;
-	.border-col(@gray);	
+	.border(@gray, 0.1);
 		@media (min-width: @screen-md) {
 		.max-w(27);
 		}

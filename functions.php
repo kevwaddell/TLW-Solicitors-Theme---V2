@@ -113,7 +113,6 @@ function custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
-require_once(STYLESHEETPATH . '/_/functions/wp_bootstrap_navwalker.php');
 
 /* REGISTER FEEDBACK CPT */
 include (STYLESHEETPATH . '/_/functions/tlw_feedback_cpt.php');

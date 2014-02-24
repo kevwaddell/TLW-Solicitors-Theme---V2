@@ -2683,6 +2683,7 @@ p.intro.lrg {
 .content .gform_wrapper input[type=number],
 .content .gform_wrapper input[type=password] {
   font-size: 14px;
+  border: 1px solid #918f8f;
 }
 @media (min-width: 768px) {
   .content .gform_wrapper input[type=text],
@@ -2696,6 +2697,7 @@ p.intro.lrg {
 }
 .content .gform_wrapper textarea {
   font-size: 14px;
+  border: 1px solid #918f8f;
 }
 @media (min-width: 768px) {
   .content .gform_wrapper textarea {
@@ -2837,7 +2839,7 @@ p.intro.lrg {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-  border-color: #918f8f;
+  border: 1px solid #918f8f;
 }
 @media (min-width: 992px) {
   #search-form input.search-query {
