@@ -2722,12 +2722,12 @@ p.intro.lrg {
 @media (min-width: 768px) {
   .content .gform_wrapper ul li.fleft {
     clear: none !important;
-    width: 50%;
+    width: 49%;
     float: left;
     margin-bottom: 20px;
   }
   .content .gform_wrapper ul li.fleft select {
-    width: 95% !important;
+    width: 97% !important;
   }
 }
 .content .gform_wrapper ul li.fright {
@@ -2737,10 +2737,10 @@ p.intro.lrg {
   .content .gform_wrapper ul li.fright {
     clear: none !important;
     width: 49%;
-    float: left;
+    float: right;
   }
   .content .gform_wrapper ul li.fright select {
-    width: 95% !important;
+    width: 97% !important;
   }
 }
 .content .gform_wrapper .gform_heading {
@@ -2790,7 +2790,7 @@ p.intro.lrg {
 }
 @media (min-width: 992px) {
   .content .gform_wrapper .gform_footer:before {
-    left: 320px;
+    left: 301px;
     right: auto;
   }
 }
@@ -2818,7 +2818,7 @@ p.intro.lrg {
 }
 @media (min-width: 992px) {
   .content .gform_wrapper .gform_footer input.gform_button {
-    max-width: 320px;
+    max-width: 340px;
   }
 }
 .content .gform_wrapper .gform_footer input.gform_button:hover,
