@@ -34,14 +34,30 @@ header[role="banner"] {
 		.bg-img("tlw-logo-mobile.png");
 		.bg-repeat(no-repeat);
 		background-position: left center;
-			&:hover, &:active, &:focus{
-			.opacity(0.5);	
-			}
-			
+		
 			@media (min-width: @screen-sm) { 
 			.h(8);
 			.bg-img("tlw-logo.png");
 			}
+		
+			@media
+				only screen and (-webkit-min-device-pixel-ratio: 1.5),
+				only screen and (   min--moz-device-pixel-ratio: 1.5),
+				only screen and (     -o-min-device-pixel-ratio: 3/2),
+				only screen and (        min-device-pixel-ratio: 1.5){ 
+				.bg-img("x2/tlw-logo-mobile-x2.png");
+				.bg-size(contain);
+				
+				@media (min-width: @screen-sm) { 
+				.bg-img("x2/tlw-logo-x2.png");
+				.bg-size(contain);
+				}
+			}
+			
+			&:hover, &:active, &:focus{
+			.opacity(0.5);	
+			}
+			
 		}
 			
 	}

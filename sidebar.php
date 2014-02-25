@@ -6,7 +6,7 @@ $topics_args = array(
 	'orderby'            => 'meta_value',
 	'hierarchical'       => 0,
 	'title_li'           => "",
-	'show_option_none'   => __('No Categories'),
+	'show_option_none'   => "",
 	'echo'               => 0,
 	'taxonomy'           => 'category',
 	'exclude'		     => 1
@@ -25,5 +25,7 @@ $topics = wp_list_categories($topics_args);
 	<?php echo $topics; ?>
 	<?php }  ?>
 </ul>
+
+
 
 <?php include (STYLESHEETPATH . '/_/inc/sidebar/social-feed.php'); ?>

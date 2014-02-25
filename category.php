@@ -140,7 +140,8 @@ $page_icon = get_field('page_icon', $news_page->ID);
 			</div><!-- End List -->
 			
 			<?php else: ?>
-			<h2>No posts to display</h2>
+			<h3 class="text-center">Sorry</h3>
+			<p class="text-center">There is no news for <?php single_cat_title(); ?> at the moment.</p>
 			<?php endif; ?>
 			
 		</div><!-- End Col -->
