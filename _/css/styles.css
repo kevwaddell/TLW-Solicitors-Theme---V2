@@ -1875,6 +1875,7 @@ aside.sidebar ul.contact-list li a:focus {
 .sidebar-feeds-block .sidebar-tab-content .feed-wrap ul.feed-list p.title a {
   text-decoration: none;
   color: #4b4b4b;
+  word-wrap: break-word;
 }
 .sidebar-feeds-block .sidebar-tab-content .feed-wrap ul.feed-list p.title a:hover,
 .sidebar-feeds-block .sidebar-tab-content .feed-wrap ul.feed-list p.title a:active,
