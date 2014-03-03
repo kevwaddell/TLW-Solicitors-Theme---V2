@@ -106,7 +106,7 @@ $page_icon = get_field('page_icon', $news_page->ID);
 									
 									<div class="colxs-12 col-sm-7 col-md-7 col-lg-7">
 										<h4><?php the_title(); ?></h4>
-										<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar"></i> <?php echo $date; ?>></time>
+										<time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar"></i> <?php echo $date; ?></time>
 										<?php the_excerpt(); ?>
 									</div>
 								
