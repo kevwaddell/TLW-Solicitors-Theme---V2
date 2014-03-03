@@ -1431,24 +1431,29 @@ button.icon-btn:focus {
 .content #cookie-law-list p.tag-label {
   margin-bottom: 0px;
 }
-.content .top-page-links {
+.content .top-page-links,
+.content .bottom-page-links {
   margin-bottom: 20px;
 }
 @media (min-width: 768px) {
-  .content .top-page-links {
+  .content .top-page-links,
+  .content .bottom-page-links {
     margin-bottom: 30px;
   }
 }
-.content .top-page-links li {
+.content .top-page-links li,
+.content .bottom-page-links li {
   margin-bottom: 10px;
 }
 @media (min-width: 992px) {
-  .content .top-page-links li {
+  .content .top-page-links li,
+  .content .bottom-page-links li {
     float: left;
-    margin-right: 30px;
+    margin-right: 10px;
   }
 }
-.content .top-page-links a {
+.content .top-page-links a,
+.content .bottom-page-links a {
   display: block;
   background-color: #918f8f;
   color: #ffffff;
@@ -1459,21 +1464,30 @@ button.icon-btn:focus {
   padding-right: 20px;
 }
 .content .top-page-links a:hover,
+.content .bottom-page-links a:hover,
 .content .top-page-links a:active,
-.content .top-page-links a:focus {
+.content .bottom-page-links a:active,
+.content .top-page-links a:focus,
+.content .bottom-page-links a:focus {
   background-color: #c60751;
 }
-.content .top-page-links li.active a {
+.content .top-page-links li.active a,
+.content .bottom-page-links li.active a {
   padding-right: 0px;
   background-color: #c60751;
 }
-.content .top-page-links li.active a i {
+.content .top-page-links li.active a i,
+.content .bottom-page-links li.active a i {
   width: 40px;
   height: 40px;
   line-height: 40px;
   text-indent: 0px;
   text-align: center;
   float: right;
+}
+.content .bottom-page-links {
+  margin-bottom: 0px;
+  margin-top: 40px;
 }
 .search-list {
   margin-top: 20px;

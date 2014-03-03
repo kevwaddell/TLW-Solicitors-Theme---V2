@@ -10,28 +10,42 @@ Template Name: Legal pages template
 $intro = get_field('intro');
 $related_pages = get_field('page_links'); 
 
+$children_args = array(
+	'sort_column' => 'menu_order',
+	'hierarchical' => 0,
+	'post_type' => 'page'
+);
+
+if ($post->post_parent == 0) {
+$children_args['parent'] = $post->ID;
+} else {
+$children_args['parent'] = $post->post_parent;	
+}
+
+$children = get_pages($children_args);	
+
+//echo '<pre>';print_r($children);echo '</pre>';
+
 ?>	
  
  	<div class="row">
  	
 	 	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
 	 	
-		 	<?php if (isset($related_pages)) { ?>
+		 	<?php if (isset($children) && $post->post_parent != 0) { ?>
 	 			
 	 			<ul class="top-page-links list-unstyled clearfix">
-	 			
-	 				<li class="active"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?><i class="fa fa-angle-down fa-lg"></i></a></li>
 	 				
-	 			<?php foreach ($related_pages as $related_page) { 
-		 			
-		 			if ($related_page['link_title']) {
-			 			$title = $related_page['link_title'];
-		 			} else {
-			 			$title = $related_page['page']->post_title;
-		 			}
-		 			
-	 			?>
-	 				<li><a href="<?php echo get_permalink($related_page['page']->ID); ?>" title="<?php echo $title; ?>"><?php echo $title; ?></a></li>
+	 			<?php foreach ($children as $child) { ?>
+	 				
+	 				<li<?php echo ($child->ID == $post->ID) ? ' class="active"' : ''; ?>>
+		 				<a href="<?php echo get_permalink($child->ID); ?>" title="<?php echo $child->post_title; ?>">
+		 				<?php echo $child->post_title; ?>
+		 				<?php if ($child->ID == $post->ID) { ?> 				
+		 				<i class="fa fa-angle-down fa-lg"></i>
+		 				<?php }  ?>
+		 				</a>
+	 				</li>
 	 			<?php } ?>
 	 				
 	 			</ul>
@@ -83,6 +97,19 @@ $related_pages = get_field('page_links');
 					
 				<?php } ?>
 			</article>
+			
+			<?php if (isset($children) && $post->post_parent == 0) { ?>
+	 			
+	 			<ul class="bottom-page-links list-unstyled clearfix">
+	 				
+	 			<?php foreach ($children as $child) { ?>
+	 				
+	 				<li><a href="<?php echo get_permalink($child->ID); ?>" title="<?php echo $child->post_title; ?>"><?php echo $child->post_title; ?></a></li>
+	 			<?php } ?>
+	 				
+	 			</ul>
+	 		
+	 		<?php }  ?>
 			
 	 	</div>
 		
