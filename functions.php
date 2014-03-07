@@ -140,4 +140,32 @@ include (STYLESHEETPATH . '/_/functions/submit_newsletter.php');
 
 //holder_add_theme( 'wordpress', '333333', 'eeeeee' );
 holder_add_theme( 'lite-gray', '888888', 'eeeeee' );
+
+function add_gf_cap()
+{	
+   $id = 2;
+   $role = new WP_User( $id );
+   $role->add_cap( 'gravityforms_edit_forms' );
+   $role->add_cap( 'gravityforms_view_entries' );
+   $role->add_cap( 'gravityforms_edit_entries' );
+   $role->add_cap( 'gravityforms_export_entries' );
+   $role->add_cap( 'gravityforms_view_entry_notes' );
+   $role->add_cap( 'gravityforms_edit_entry_notes' );
+}
+ 
+add_action( 'admin_init', 'add_gf_cap' );
+
+/*
+function wpse126301_dashboard_columns() {
+    add_screen_option(
+        'layout_columns',
+        array(
+            'max'     => 2,
+            'default' => 1
+        )
+    );
+}
+add_action( 'admin_head-index.php', 'wpse126301_dashboard_columns' );
+*/
+
  ?>
