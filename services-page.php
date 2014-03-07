@@ -112,19 +112,13 @@ $sm_col = "col-sm-12";
 			$current_id = $active_child->ID;
 			$tab_toggle = true;
 			$url = '#'.$child->post_name;	
-				
-				/*
-if (wp_is_mobile()) {
-				$url = get_permalink($child->ID);	
-				$tab_toggle = false;	
-				}	
-*/
+			$tracking = true;
 			}	
 
 			?>
 			
 			<li class="col-xs-12 <?php echo $sm_col ; ?> col-md-12 col-lg-12<?php echo ($current_id == $child->ID) ? ' active':''; ?>">
-					<a href="<?php echo $url; ?>"<?php echo ($tab_toggle) ? ' data-toggle="tab"': ''; ?> class="no-icon" title="<?php echo $child->post_title; ?>"><?php echo $child->post_title; ?><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>
+					<a href="<?php echo $url; ?>"<?php echo ($tab_toggle) ? ' data-toggle="tab"': ''; ?><?php echo ($tracking) ? " onclick=\"_gaq.push(['_trackEvent', 'tab','clicked', '".$child->post_title."'])\" ": ""; ?> class="no-icon" title="<?php echo $child->post_title; ?>"><?php echo $child->post_title; ?><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>
 				</li>
 			
 			<?php } ?>

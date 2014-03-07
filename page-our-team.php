@@ -65,7 +65,7 @@ $intro = get_field('intro');
 			$tabs_counter++;
 			?>
 				<li<?php echo ($tabs_counter == 1) ? ' class="active"':''; ?>>
-					<a href="#<?php echo $position->slug ; ?>" data-toggle="tab" title="<?php echo $position->name ; ?>" class="no-icon"><?php echo $position->name ; ?><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i>
+					<a href="#<?php echo $position->slug ; ?>" data-toggle="tab" title="<?php echo $position->name ; ?>" class="no-icon" onclick="_gaq.push(['_trackEvent', 'tab','clicked', '<?php echo $position->name ; ?>'])"><?php echo $position->name ; ?><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i>
 					</a>
 				</li>
 			
