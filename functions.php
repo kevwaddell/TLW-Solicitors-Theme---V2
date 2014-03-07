@@ -85,13 +85,31 @@ add_theme_support( 'custom-header', $custom_header_args );
 function add_feat_img ( $post ) {	
 	
 	if (has_post_thumbnail($post->ID)) {
-		$img_atts = array('class'	=> "img-responsive");
+		
+		$post_thumbnail_id = get_post_thumbnail_id( $post->ID );
+		$attachment = get_post( $post_thumbnail_id );
+		$alt = get_post_meta($post_thumbnail_id, '_wp_attachment_image_alt', true);
+		
+		//echo '<pre>';print_r($attachment->post_excerpt);echo '</pre>';
+		
+		
+		$img_atts = array(
+		'class'	=> "img-responsive"
+		);
+		
+		if (!empty($alt)){
+		$img_atts['alt'] = 	trim(strip_tags( $alt ));
+		}
+		
+		if (!empty($attachment->post_title)){
+		$img_atts['title'] = 	trim(strip_tags( $attachment->post_title ));
+		}
 		
 		echo get_the_post_thumbnail($post->ID ,'feat-img', $img_atts );
 	
 	} else {
 		
-		echo '<img src="'.get_stylesheet_directory_uri().'/_/img/default-featured-img.jpg" alt="TLW Solicitors>" class="img-responsive">';
+		echo '<img src="'.get_stylesheet_directory_uri().'/_/img/default-featured-img.jpg" title="TLW Solicitors" alt="TLW Solicitors" class="img-responsive">';
 		
 	}
 	

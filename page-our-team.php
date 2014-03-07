@@ -126,7 +126,7 @@ $intro = get_field('intro');
 								<div class="profile-img hidden-xs col-sm-5 col-md-5 col-lg-5">
 								
 									<figure>
-										<img src="<?php echo $profile_img['sizes']['profile-thumb']; ?>" width="<?php echo $profile_img['sizes']['profile-thumb-width']; ?>" height="<?php echo $profile_img['sizes']['profile-thumb-height']; ?>">
+										<img src="<?php echo $profile_img['sizes']['profile-thumb']; ?>" width="<?php echo $profile_img['sizes']['profile-thumb-width']; ?>" height="<?php echo $profile_img['sizes']['profile-thumb-height']; ?>" alt="<?php echo $profile_img['title']; ?>">
 									</figure>
 									
 								</div>
