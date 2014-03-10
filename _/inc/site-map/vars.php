@@ -17,7 +17,8 @@ $company_args = array(
 'post_type'		=> 'page',
 'orderby'		=> 'menu_order',
 'post_parent'	=> $company_page->ID,
-'order'			=> 'ASC'
+'order'			=> 'ASC',
+'posts_per_page' => -1,
 );
 
 $company_pages = get_posts($company_args);
@@ -31,10 +32,13 @@ $rescources_args = array(
 
 $rescources_pages = get_posts($rescources_args);
 
+$legal_page = get_page_by_title('Legal Notices');
+$legal_page_icon = get_field('page_icon', $legal_page->ID);
+
 $legal_args = array(
 'post_type'		=> 'page',
 'orderby'		=> 'menu_order',
-'include'		=> array(101, 103, 105),
+'post_parent'	=> $legal_page->ID,
 'order'			=> 'ASC'
 );
 

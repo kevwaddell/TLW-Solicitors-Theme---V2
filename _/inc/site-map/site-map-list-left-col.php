@@ -12,6 +12,7 @@
 	}
 	
 	$practice_args = array(
+	'posts_per_page' => -1,
 	'post_type'		=> 'page',
 	'orderby'		=> 'menu_order',
 	'post_parent'	=> $practice->ID,

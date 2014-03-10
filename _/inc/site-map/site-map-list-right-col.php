@@ -32,7 +32,7 @@
 		</div>
 	<?php } ?>
 	
-	<h3><i class="icon fa fa-gavel fa-lg"></i>Legal</h3>
+	<h3><a href="<?php echo get_permalink($legal_page->ID); ?>"><?php echo ($legal_page_icon) ? '<i class="icon fa '.$legal_page_icon.' f-lg"></i>': ''; ?><?php echo $legal_page->post_title; ?><i class="fa fa-angle-right fa-lg"></i></a></h3>
 	
 	<?php if ($legal_pages) { ?>
 		<div class="list-block">
