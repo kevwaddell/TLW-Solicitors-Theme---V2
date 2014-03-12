@@ -113,12 +113,13 @@ $intro = get_field('intro');
 				$current_id = $active_child->ID;
 				$tab_toggle = true;
 				$url = '#'.$child->post_name;	
+				$tracking = true;
 				}	
 				
 				?>
 				
 				<li<?php echo ($current_id == $child->ID) ? ' class="active"':''; ?>>
-					<a href="<?php echo $url; ?>"<?php echo ($tab_toggle) ? ' data-toggle="tab"': ''; ?> title="<?php echo $child->post_title; ?>"><?php echo $icon; ?><span><?php echo $child->post_title; ?></span><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>
+					<a href="<?php echo $url; ?>"<?php echo ($tab_toggle) ? ' data-toggle="tab"': ''; ?><?php echo ($tracking) ? " onclick=\"_gaq.push(['_trackEvent', 'tab','clicked', '".$child->post_title."'])\" ": ""; ?> title="<?php echo $child->post_title; ?>"><?php echo $icon; ?><span><?php echo $child->post_title; ?></span><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>
 				</li>
 				
 				<?php } ?>
