@@ -8,9 +8,31 @@ $gallery_imgs = get_field('gallery_imgs');
 	
 	<div class="row">
 	
-	<?php if (empty($gallery_imgs) || !has_post_thumbnail()) { ?>
+	<?php if (has_post_thumbnail() || $gallery_imgs) { ?>
 	
-		<?php $post_categories = get_the_category_list(); ?>
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-push-4 col-md-offset-0 col-lg-7 col-lg-push-4 col-lg-offset-0">
+	
+			<article <?php post_class(); ?>>
+			
+				<time class="date" datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar fa-lg"></i> <?php echo $date; ?></time>
+				
+				<h2 style="margin-top: 0px;"><?php the_title(); ?></h2>
+				
+				<?php the_content(); ?>
+				
+			</article>
+	
+		</div>
+		
+		<aside class="sidebar single col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-pull-8 col-md-offset-0 col-lg-4 col-lg-pull-7 col-lg-offset-0">
+			
+			<?php get_sidebar('single'); ?>
+			
+		</aside>
+	
+	<?php } else { ?>
+		
+	<?php $post_categories = get_the_category_list(); ?>
 	
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
 	
@@ -34,30 +56,7 @@ $gallery_imgs = get_field('gallery_imgs');
 				<?php echo do_shortcode('[shareaholic app="share_buttons" id="5017257"]'); ?>
 			</div>
 	
-	</div>
-	
-	<?php } else { ?>
-		
-		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-push-4 col-md-offset-0 col-lg-7 col-lg-push-4 col-lg-offset-0">
-	
-			<article <?php post_class(); ?>>
-			
-				<time class="date" datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><i class="fa fa-calendar fa-lg"></i> <?php echo $date; ?></time>
-				
-				<h2 style="margin-top: 0px;"><?php the_title(); ?></h2>
-				
-				<?php the_content(); ?>
-				
-			</article>
-	
-		</div>
-		
-		<aside class="sidebar single col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-pull-8 col-md-offset-0 col-lg-4 col-lg-pull-7 col-lg-offset-0">
-			
-			<?php get_sidebar('single'); ?>
-			
-		</aside>
-			
+	</div>			
 
 	<?php } ?>
 	
