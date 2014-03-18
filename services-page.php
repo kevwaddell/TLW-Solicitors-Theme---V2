@@ -72,6 +72,8 @@ $color = get_field('page_colour');
 				
 				</div>
 				
+				<?php include (STYLESHEETPATH . '/_/inc/global/access-btns.php'); ?>
+				
 			</div>
 			
 		</article>

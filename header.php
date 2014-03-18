@@ -36,6 +36,12 @@
 	$services = array(24, 26, 29, 31, 33, 35);
 	global $post;
 	
+	if ( isset($_COOKIE['font_size']) ) {
+    $font_size = $_COOKIE['font_size'];	
+	} else {
+	$font_size = "txt-sm";	
+	}
+	
 	if (in_array($post->post_parent, $services)) {
 	$dir = "services";	
 	}
@@ -61,7 +67,7 @@
 	
 </head>
 
-<body id="<?php echo $dir ?>" <?php body_class(); ?>>
+<body id="<?php echo $dir ?>" <?php body_class($font_size); ?>>
 
 <div class="tlw-wrapper nav-closed">
 	

@@ -32,6 +32,8 @@ $form = get_field('form');
 		</article>
 	 
 	 </div>
+	 
+	 <?php include (STYLESHEETPATH . '/_/inc/global/access-btns.php'); ?>
 	 		
  </div>
 <?php endwhile; ?>

@@ -47,6 +47,8 @@ $intro = get_field('intro');
 				
 				</div>
 				
+				<?php include (STYLESHEETPATH . '/_/inc/global/access-btns.php'); ?>
+				
 			</div>
 			
 		</article>
@@ -105,8 +107,8 @@ $feed_counter = 0;
 			?>
 			<div class="col-xs-12 col-sm-6 <?php echo $col_md ; ?> <?php echo $col_lg ; ?>">
 				<blockquote id="quote-<?php echo $feed_counter ; ?>" class="<?php echo $pointer; ?>">
-					<p class="quote text-center"><i class="fa fa-quote-left"></i> <?php echo $quote ; ?> <i class="fa fa-quote-right"></i><p> 
-					<p class="name-location text-center"><?php echo $name ; ?>, <?php echo $location ; ?></p>	
+					<p class="quote text-center"><i class="fa fa-quote-left"></i> <?php echo $quote ; ?> <i class="fa fa-quote-right"></i></p> 
+					<p class="name-location text-center"><?php echo $name ; ?><br><?php echo $location ; ?></p>	
 				</blockquote>
 			</div>
 			<?php endforeach; ?>

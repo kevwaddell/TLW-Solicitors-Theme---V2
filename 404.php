@@ -33,6 +33,8 @@
 	
 	 	</div>
 	 	
+	 	<?php include (STYLESHEETPATH . '/_/inc/global/access-btns.php'); ?>
+	 	
 	</div>
 
 <?php get_footer(); ?>

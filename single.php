@@ -29,6 +29,8 @@ $gallery_imgs = get_field('gallery_imgs');
 			<?php get_sidebar('single'); ?>
 			
 		</aside>
+		
+		<?php include (STYLESHEETPATH . '/_/inc/global/access-btns.php'); ?>
 	
 	<?php } else { ?>
 		
@@ -56,7 +58,9 @@ $gallery_imgs = get_field('gallery_imgs');
 				<?php echo do_shortcode('[shareaholic app="share_buttons" id="5017257"]'); ?>
 			</div>
 	
-	</div>			
+	</div>	
+	
+	<?php include (STYLESHEETPATH . '/_/inc/global/access-btns.php'); ?>		
 
 	<?php } ?>
 	

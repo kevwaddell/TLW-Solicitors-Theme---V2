@@ -40,6 +40,8 @@ $page_icon = get_field('page_icon', $news_page->ID);
 				
 				</div>
 				
+				<?php include (STYLESHEETPATH . '/_/inc/global/access-btns.php'); ?>
+				
 				
 			</div>
 			

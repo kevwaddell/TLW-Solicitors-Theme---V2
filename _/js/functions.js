@@ -144,6 +144,25 @@
         height: '300px',
        alwaysVisible: true
     });
+    
+    /* ACCESSABILITY FUNCTIONS 
+	    
+	    Button actions to control the text size
+    */
+    
+    $('body').on(event_type,'button.access-btn', function(e){
+    
+    	var txt_size = $(this).attr('data-role');
+    	
+    	$(this).siblings().removeClass('active');
+    	$(this).addClass('active');
+    	
+    	 $('body').removeClass('txt-md txt-lg txt-sm').addClass(txt_size);
+    	 $.cookie('font_size', txt_size, { path: '/' } );  
+	     	     			
+		return false;
+		
+	});
 
 
 	
