@@ -10,7 +10,9 @@ $gallery_imgs = get_field('gallery_imgs');
 	
 	<?php if (has_post_thumbnail() || $gallery_imgs) { ?>
 	
-	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-push-4 col-md-offset-0 col-lg-7 col-lg-push-4 col-lg-offset-0">
+		<?php include (STYLESHEETPATH . '/_/inc/global/access-btns-single.php'); ?>
+	
+		<div class="col-xs-12 col-sm-10 col-sm-pull-1 col-sm-offset-1 col-md-7 col-md-push-3 col-md-offset-0 col-lg-7 col-lg-push-3 col-lg-offset-0">
 	
 			<article <?php post_class(); ?>>
 			
@@ -24,13 +26,11 @@ $gallery_imgs = get_field('gallery_imgs');
 	
 		</div>
 		
-		<aside class="sidebar single col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-pull-8 col-md-offset-0 col-lg-4 col-lg-pull-7 col-lg-offset-0">
+		<aside class="sidebar single col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-pull-8 col-md-offset-0 col-lg-4 col-lg-pull-8 col-lg-offset-0">
 			
 			<?php get_sidebar('single'); ?>
 			
 		</aside>
-		
-		<?php include (STYLESHEETPATH . '/_/inc/global/access-btns.php'); ?>
 	
 	<?php } else { ?>
 		

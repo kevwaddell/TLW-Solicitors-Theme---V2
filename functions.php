@@ -1,5 +1,10 @@
 <?php 
 
+/*
+update_option('siteurl','http://tlwsolicitors.dev');
+update_option('home','http://tlwsolicitors.dev');
+*/
+
 if ( !function_exists(core_mods) ) {
 	function core_mods() {
 		if ( !is_admin() ) {
