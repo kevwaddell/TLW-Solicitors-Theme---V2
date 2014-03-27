@@ -86,13 +86,6 @@ $color = get_field('page_colour');
 
 <?php if ($children) { 
 $contact_page = get_page_by_title("Contact us");
-$child_count = count($children);
-
-if ( $child_count % 2 == 0 ) {
-$sm_col = "col-sm-6";	
-} else {
-$sm_col = "col-sm-12";	
-}
 ?>
 
 <!-- PAGE CONTENT SECTION -->
@@ -119,7 +112,7 @@ $sm_col = "col-sm-12";
 
 			?>
 			
-			<li class="col-xs-12 <?php echo $sm_col ; ?> col-md-12 col-lg-12<?php echo ($current_id == $child->ID) ? ' active':''; ?>">
+			<li class="col-xs-12 col-sm-12 col-md-12 col-lg-12<?php echo ($current_id == $child->ID) ? ' active':''; ?>">
 					<a href="<?php echo $url; ?>"<?php echo ($tab_toggle) ? ' data-toggle="tab"': ''; ?><?php echo ($tracking) ? " onclick=\"_gaq.push(['_trackEvent', 'tab','clicked', '".$child->post_title."'])\" ": ""; ?> class="no-icon" title="<?php echo $child->post_title; ?>"><?php echo $child->post_title; ?><i class="fa fa-angle-right fa-lg"></i><i class="fa fa-angle-down fa-lg"></i></a>
 				</li>
 			

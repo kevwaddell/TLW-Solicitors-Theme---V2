@@ -55,7 +55,7 @@ $gallery_imgs = get_field('gallery_imgs');
 			<?php } ?>
 			
 			<div class="share-btns">
-				<?php echo do_shortcode('[shareaholic app="share_buttons" id="5017257"]'); ?>
+				<?php echo do_shortcode('[ssba]'); ?>
 			</div>
 	
 	</div>	

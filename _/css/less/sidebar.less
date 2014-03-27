@@ -47,12 +47,14 @@ aside.sidebar {
 			.bg-col(@gray);
 			.col(white);
 			.no-text-dec;
-			.border-bot(white; 0.1);
+			.mag-bot(1);
+			/* .border-bot(white; 0.1); */
 			-webkit-font-smoothing: subpixel-antialiased;
 			
 			@media (min-width: @screen-md) {
 			.line-h(5);
 			.h(5);
+			.mag-bot(0.1);
 			}
 			
 			span {
@@ -263,10 +265,12 @@ aside.sidebar {
 			.col(white);
 			.no-text-dec;
 			.border-bot(white; 0.1);
+			.mag-bot(1);
 			.indent(2);	
 			-webkit-font-smoothing: subpixel-antialiased;
 			
 			@media (min-width: @screen-md) {
+			.mag-bot(0.1);
 			.line-h(5);
 			.h(5);
 			}
