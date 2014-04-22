@@ -7,7 +7,15 @@ Template Name: Thank page template
 <?php get_header(); ?>
 
 <?php if ( have_posts() ): while ( have_posts() ) : the_post(); ?>	
- 	
+
+<?php 
+if (isset($_GET['return-page'])) {
+$return_id = $_GET['return-page'];
+} else {
+$return_id = $post->post_parent;	
+}
+ ?>
+
 <section class="page-top">
 
 		<article <?php post_class(); ?>>
@@ -25,7 +33,7 @@ Template Name: Thank page template
 				
 				<h2>Thank you for contacting us <?php echo $_GET['first-name'] ; ?>.</h2>
 				<p>A member of our team will contact you shortly.</p>
-				<a href="<?php echo get_permalink($post->post_parent) ; ?>" class="icon-btn" style="padding-left:10px; width: 300px;" id="reload-form">Continue <i class="fa fa-angle-right fa-lg"></i></a>
+				<a href="<?php echo get_permalink($return_id) ; ?>" class="icon-btn" style="padding-left:10px; width: 300px;" id="reload-form">Continue <i class="fa fa-angle-right fa-lg"></i></a>
 				
 				<!-- Google Code for Enquiry Submissions Conversion Page -->
 				<script type="text/javascript">
