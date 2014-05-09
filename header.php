@@ -46,7 +46,7 @@
 	$dir = "services";	
 	}
 	
-	if ($post->post_parent == 10) { ?>
+	if ($post->post_parent == 10 && $_SERVER['SERVER_NAME'] =='www.tlwsolicitors.co.uk') { ?>
 	<!-- Facebook Conversion Code for FB Leads -->
 	<script type="text/javascript">
 	var fb_param = {};
