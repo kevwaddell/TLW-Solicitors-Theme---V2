@@ -115,9 +115,36 @@
 	<?php if (!is_front_page()) { ?>
 	<div id="breadcrumbs">
 		<div class="container">		
-			<?php if ( function_exists('yoast_breadcrumb') ) {
-				yoast_breadcrumb('<div id="breadcrumbs-inner"><div class="row"><div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0 col-lg-12 col-lg-offset-0">','</div></div></div>');
-			} ?>	
+			<div id="breadcrumbs-inner">
+				<div class="row">
+					<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0 col-lg-12 col-lg-offset-0">
+						
+						<?php if ( function_exists('yoast_breadcrumb') ) {
+							
+							$yoast = yoast_breadcrumb("","",false);
+							$string_legnth = 550;
+							
+							if (wp_is_mobile()) {
+								$string_legnth = 460;
+							}
+							
+							if(strlen($yoast) < $string_legnth) { ?>
+								
+								<?php echo $yoast; ?> 
+								
+								<?php } else { ?>
+								
+								<?php echo substr($yoast, 0, $string_legnth)."..."; ?>
+								
+								</span>
+								
+								<?php } ?>
+						
+						<?php } ?>	
+						
+					</div>
+				</div>
+			</div>
 		</div>		
 	</div>	
 	<?php }  ?>
