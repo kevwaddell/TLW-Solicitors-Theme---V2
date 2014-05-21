@@ -6,8 +6,3 @@ Author URI: http://www.tlwsolicitors.co.uk
 Template: tlwbasetemplate
 Version: 2.0
 */
-
-@import "../tlwbasetemplate/style.css";
-
-/* SHOP STYLES */
-@import "_/css/styles.css";
