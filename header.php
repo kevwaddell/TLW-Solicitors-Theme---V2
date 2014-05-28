@@ -160,7 +160,7 @@
 		<div class="banner-wrap" style="background-image: url(<?php echo $header_img; ?>);">
 			
 			<div class="container">
-			<p class="tag-line">For added TLC<br>think TLW Solicitors</p>
+			<p class="tag-line white">For added TLC<br>think TLW Solicitors</p>
 			</div>
 			
 		</div>
