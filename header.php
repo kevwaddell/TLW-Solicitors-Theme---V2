@@ -155,7 +155,7 @@
 		
 	?>
 	
-	<section id="home-banner">
+	<div id="home-banner">
 	
 		<div class="banner-wrap" style="background-image: url(<?php echo $header_img; ?>);">
 			
@@ -165,7 +165,7 @@
 			
 		</div>
 
-	</section>
+	</div>
 	
 	<?php } ?>
 		

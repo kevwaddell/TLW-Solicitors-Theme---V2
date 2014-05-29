@@ -98,7 +98,7 @@ $feedback_quotes = get_posts($feedback_args);
 <?php }  ?>
 
 <?php if ($feedback_quotes) { ?>
-<section id="feedback-section">
+<div id="feedback-section">
 	
 	<div id="feedback-carousel" class="carousel slide">
 			
@@ -121,7 +121,7 @@ $feedback_quotes = get_posts($feedback_args);
 		
 	</div>
 
-</section>
+</div>
 <?php }  ?>
 
 

@@ -114,7 +114,7 @@ $intro = get_field('intro');
 				} else {
 				$current_id = $active_child->ID;
 				$tab_toggle = true;
-				$url = '#'.$child->post_name;	
+				$url = '#'.$child->post_name.'-panel';	
 				$tracking = true;
 				}	
 				
@@ -170,7 +170,7 @@ $intro = get_field('intro');
 				//echo '<pre>';print_r($rel_pages);echo '</pre>';
 				?>
 				
-				<article class="page tabs-panel" id="<?php echo $post->post_name; ?>">
+				<article class="page tabs-panel" id="<?php echo $active_child->post_name; ?>-panel">
 				
 					<h3 class="icon-header">
 						<?php if (isset($page_icon)) { ?>
@@ -228,7 +228,7 @@ $intro = get_field('intro');
 				$rel_pages = get_field('page_links');
 				?>
 		
-				<article class="page tab-pane tabs-panel fade<?php echo ($post->ID == $active_child->ID) ? ' in active':''; ?>" id="<?php echo $post->post_name; ?>">
+				<article class="page tab-pane tabs-panel fade<?php echo ($post->ID == $active_child->ID) ? ' in active':''; ?>" id="<?php echo $post->post_name; ?>-panel">
 					
 					<h3 class="icon-header">
 					<?php if (isset($page_icon)) { ?>
