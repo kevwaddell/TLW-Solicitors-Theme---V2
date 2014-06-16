@@ -82,12 +82,12 @@
 				
 					<?php $freephone_num = get_field('freephone_num', 'option');?>
 					<?php if (isset($freephone_num)) { ?>
-					<div class="col-xs-12 col-sm-3 col-sm-push-3 col-md-5 col-md-push-2 col-lg-6 col-lg-push-2 " style="text-align:center;">
+					<div class="col-xs-12 col-sm-3 col-sm-push-3 col-md-4 col-md-push-3 col-lg-6 col-lg-push-2 " style="text-align:center;">
 						<span class="tel-num text-center"><i class="fa fa-mobile fa-lg"></i> <?php echo $freephone_num; ?></span>
 					</div>
 					<?php }  ?>
 				
-					<div class="col-xs-10 col-sm-3 col-sm-pull-3 col-md-2 col-md-pull-5 col-lg-2 col-lg-pull-6">
+					<div class="col-xs-10 col-sm-3 col-sm-pull-3 col-md-3 col-md-pull-4 col-lg-2 col-lg-pull-6">
 						<h1 class="text-hide"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 					</div>
 					
