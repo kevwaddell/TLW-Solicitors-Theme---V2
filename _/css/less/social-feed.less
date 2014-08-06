@@ -1,4 +1,40 @@
 .sidebar-feeds-block {
+	
+	ul.wprssmi_bullet_list {
+		.mag-bot(0);
+		.pad-left(0);
+		list-style: none;
+		
+			li {
+			.pad-right(1);
+			.pad-left(2);	
+			.mag-bot(2);
+			
+				&:last-child {
+				.mag-bot(0);	
+				}
+			}	
+			
+			a {
+			.block;
+			.font-size(1.4);
+			.no-text-dec;
+			.col(@grayDk);
+			word-wrap: break-word;
+				&:hover, &:active, &:focus {
+				.col(@gray);	
+				}	
+			}	
+			
+			span.date {
+			.font-size(1.2);
+			.caps;
+			.col(@red);	
+			}
+	}
+}
+
+.sidebar-feeds-block {
 .border-bot(lighten(@gray, 20%), 1);
 .mag-bot(3);
 

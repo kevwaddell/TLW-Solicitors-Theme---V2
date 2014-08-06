@@ -32,6 +32,7 @@ $active_child = $children[0];
 $current_post = $post;
 }
 
+$freephone_num = get_field('freephone_num', 'option');
 ?>
 
 <?php if ( have_posts() ): while ( have_posts() ) : the_post(); ?>	
@@ -205,7 +206,7 @@ $contact_page = get_page_by_title("Contact us");
 			
 			</div>	
 			
-			 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span>0800 169 5925</span></p>
+			 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span><a href="tel:<?php echo str_replace(' ', '', $freephone_num); ?>" onclick="_gaq.push(['_trackEvent', 'Lead', 'ClickToCall']);" title="Call us now"><?php echo $freephone_num; ?></a></span></p>
 			
 		</div><!-- End Col -->
 		

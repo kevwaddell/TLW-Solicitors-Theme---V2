@@ -14,6 +14,7 @@ $post_ID = $post->ID;
 }
 
 $news_page = get_page_by_title("News");
+$freephone_num = get_field('freephone_num', 'option');
 
 $extra_child_args =  array(
 	'sort_column' => 'menu_order',
@@ -166,7 +167,6 @@ $intro = get_field('intro');
 				$sub_intro = get_field('intro', $active_child->ID);
 				$page_icon = get_field('page_icon', $active_child->ID);
 				$rel_pages = get_field('page_links', $active_child->ID);
-				$freephone_num = get_field('freephone_num', 'option');
 				//echo '<pre>';print_r($rel_pages);echo '</pre>';
 				?>
 				
@@ -210,7 +210,7 @@ $intro = get_field('intro');
 						<?php } ?>
 						
 						<?php if ($active_child->post_name == "company-profile") { ?>
-						 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span>0800 169 5925</span></p>
+						 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span><a href="tel:<?php echo str_replace(' ', '', $freephone_num); ?>" onclick="_gaq.push(['_trackEvent', 'Lead', 'ClickToCall']);" title="Call us now"><?php echo $freephone_num; ?></a></span></p>
 						<?php }  ?>
 						
 						</div>
@@ -274,7 +274,7 @@ $intro = get_field('intro');
 						<?php } ?>
 						
 						<?php if ($post->post_name == "company-profile") { ?>
-						 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span>0800 169 5925</span></p>
+						 <p class="tel-num"><i class="fa fa-mobile"></i> Or call us free on <span><a href="tel:<?php echo str_replace(' ', '', $freephone_num); ?>" onclick="_gaq.push(['_trackEvent', 'Lead', 'ClickToCall']);" title="Call us now"><?php echo $freephone_num; ?></a></span></p>
 						<?php }  ?>
 						
 						</div>

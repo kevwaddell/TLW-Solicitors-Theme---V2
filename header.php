@@ -47,21 +47,39 @@
 	}
 	
 	if ($post->post_parent == 10 && $_SERVER['SERVER_NAME'] =='www.tlwsolicitors.co.uk') { ?>
-	<!-- Facebook Conversion Code for FB Leads -->
-	<script type="text/javascript">
-	var fb_param = {};
-	fb_param.pixel_id = '6015169291115';
-	fb_param.value = '0.00';
-	fb_param.currency = 'GBP';
-	(function(){
-	  var fpw = document.createElement('script');
-	  fpw.async = true;
-	  fpw.src = '//connect.facebook.net/en_US/fp.js';
-	  var ref = document.getElementsByTagName('script')[0];
-	  ref.parentNode.insertBefore(fpw, ref);
+	<!-- Facebook Conversion Code for Mortgage Mis-selling campaign -->
+	<script>(function() {
+	var _fbq = window._fbq || (window._fbq = []);
+	if (!_fbq.loaded) {
+	var fbds = document.createElement('script');
+	fbds.async = true;
+	fbds.src = '//connect.facebook.net/en_US/fbds.js';
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(fbds, s);
+	_fbq.loaded = true;
+	}
 	})();
+	window._fbq = window._fbq || [];
+	window._fbq.push(['track', '6020302130140', {'value':'0.01','currency':'USD'}]);
 	</script>
-	<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6015169291115&amp;value=0&amp;currency=GBP" /></noscript>
+	<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6020302130140&amp;cd[value]=0.01&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
+	
+	<!-- Facebook Conversion Code for Timeshare Mis-selling -->
+	<script>(function() {
+	var _fbq = window._fbq || (window._fbq = []);
+	if (!_fbq.loaded) {
+	var fbds = document.createElement('script');
+	fbds.async = true;
+	fbds.src = '//connect.facebook.net/en_US/fbds.js';
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(fbds, s);
+	_fbq.loaded = true;
+	}
+	})();
+	window._fbq = window._fbq || [];
+	window._fbq.push(['track', '6020260091340', {'value':'0.01','currency':'USD'}]);
+	</script>
+	<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6020260091340&amp;cd[value]=0.01&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
 	
 	<?php } ?>
 	
@@ -83,7 +101,7 @@
 					<?php $freephone_num = get_field('freephone_num', 'option');?>
 					<?php if (isset($freephone_num)) { ?>
 					<div class="col-xs-12 col-sm-3 col-sm-push-3 col-md-4 col-md-push-3 col-lg-6 col-lg-push-2 " style="text-align:center;">
-						<span class="tel-num text-center"><i class="fa fa-mobile fa-lg"></i> <?php echo $freephone_num; ?></span>
+						<span class="tel-num text-center"><i class="fa fa-mobile fa-lg"></i> <a href="tel:<?php echo str_replace(' ', '', $freephone_num); ?>" onclick="_gaq.push(['_trackEvent', 'Lead', 'ClickToCall']);" title="Call us now"><?php echo $freephone_num; ?></a></span>
 					</div>
 					<?php }  ?>
 				
